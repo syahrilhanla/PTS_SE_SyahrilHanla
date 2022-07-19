@@ -34,7 +34,7 @@ const Sidebar = () => {
 							</Link>
 						</li>
 						<li>
-							<Link href="#">
+							<Link href="/users">
 								<a
 									className="flex items-center md:justify-start 
 							justify-center p-2 text-base font-normal text-gray-900 rounded-lg 
@@ -51,7 +51,7 @@ const Sidebar = () => {
 							</Link>
 						</li>
 						<li>
-							<Link href="#">
+							<Link href="/summary">
 								<a
 									className="flex items-center md:justify-start 
 							justify-center p-2 text-base font-normal text-gray-900 

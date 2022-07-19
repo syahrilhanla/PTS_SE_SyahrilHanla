@@ -3,6 +3,7 @@
 		{
 			"name": "oval hat",
 			"type": "hats",
+			"image": "/assets/product/oval-hat.png",
 			"prices": [
 				{
 					"priceFor": "regular",
