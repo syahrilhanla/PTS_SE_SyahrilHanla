@@ -13,8 +13,8 @@ const Heading = () => {
 
 const Transaction = () => {
 	return (
-		<div className="grid grid-cols-[7fr_4fr] w-full">
-			<div className=" w-full">
+		<div className="grid md:grid-cols-[7fr_4fr] w-full">
+			<div className="w-full">
 				<Heading />
 				<Categories />
 			</div>
