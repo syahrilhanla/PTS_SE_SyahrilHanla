@@ -8,7 +8,7 @@ import Tooltip from "./Tooltip";
 
 const Sidebar = () => {
 	return (
-		<div className="h-full md:w-64 w-16">
+		<div className="h-full md:w-64 w-16 z-50">
 			<aside className="h-full md:w-52 w-16 fixed" aria-label="Sidebar">
 				<div
 					className="h-full w-full overflow-y-auto py-4 px-1  shadow-md
