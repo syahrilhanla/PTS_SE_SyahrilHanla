@@ -1,19 +1,24 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-import { GrTransaction } from "react-icons/gr";
 import { HiOutlineDocumentReport } from "react-icons/hi";
-import { AiOutlineUsergroupAdd } from "react-icons/ai";
+import { AiOutlineUsergroupAdd , AiOutlineShop} from "react-icons/ai";
 import { GiIsland } from "react-icons/gi";
+import { MdPointOfSale } from "react-icons/md";
 
 const Sidebar = () => {
 	const router = useRouter();
 
 	const navButtons = [
 		{
+			link: "/pos",
+			text: "Point of Sales",
+			icon: () => <MdPointOfSale />,
+		},
+		{
 			link: "/",
-			text: "Transaction",
-			icon: () => <GrTransaction />,
+			text: "Shop",
+			icon: () => <AiOutlineShop />,
 		},
 		{
 			link: "/users",

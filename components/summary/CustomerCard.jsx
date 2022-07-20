@@ -4,7 +4,7 @@ const CategoryList = ({ data, revenueOfDay }) => {
 			<div className="flex items-center space-x-4">
 				<div className="flex-shrink-0">
 					<img
-						class="w-8 h-8 rounded-full"
+						className="w-8 h-8 rounded-full"
 						src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
 						alt="Neil image"
 					/>
