@@ -1,4 +1,3 @@
-import { FaHatCowboy, FaTshirt } from "react-icons/fa";
 const CategoryList = ({ data, revenueOfDay }) => {
 	return (
 		<li className="py-4">
