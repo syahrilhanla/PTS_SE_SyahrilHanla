@@ -4,12 +4,11 @@
 	"private": true,
 	"scripts": {
 		"dev": "concurrently --kill-others \"next dev\" \"npx json-server --watch components/data/database.json --port 8000\"",
-		"build": "concurrently --kill-others \"next dev\" \"npx json-server components/data/database.json --port 8000\"",
-		"start": "concurrently --kill-others \"next dev\" \"npx json-server components/data/database.json --port 8000\"",
+		"build": "concurrently --kill-others \"next build\" \"npx json-server --watch components/data/database.json --port 8000\"",
+		"start": "concurrently --kill-others \"next start\" \"npx json-server --watch components/data/database.json --port 8000\"",
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"concurrently": "^7.3.0",
 		"flowbite": "^1.4.7",
 		"next": "12.2.2",
 		"react": "18.2.0",
