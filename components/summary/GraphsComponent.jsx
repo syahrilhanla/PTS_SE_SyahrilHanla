@@ -50,7 +50,7 @@ const GraphsComponent = () => {
 	];
 	return (
 		<div className="w-full overflow-x-auto border-slate-500 shadow-md">
-			<ResponsiveContainer width={"100%"} height={"100%"}>
+			<ResponsiveContainer width={768} height={400}>
 				<LineChart
 					width={500}
 					height={300}
@@ -59,7 +59,7 @@ const GraphsComponent = () => {
 						top: 10,
 						right: 30,
 						left: 10,
-						bottom: 10,
+						bottom: 15,
 					}}
 				>
 					<CartesianGrid strokeDasharray="3 3" />

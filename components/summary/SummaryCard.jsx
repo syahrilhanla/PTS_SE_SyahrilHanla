@@ -13,7 +13,7 @@ const SummaryCard = () => {
 	return (
 		<div className="min-w-[60vw] place-content-center p-4">
 			<TabHeader getOption={getOption} option={option} />
-			<h2 className="font-medium text-3xl">Overall Transactions: 5</h2>
+			{/* <h2 className="font-medium text-3xl">Overall Transactions: 5</h2> */}
 
 			{option === 1 && <BestSelling />}
 			{option === 2 && <RevenueCaps />}
