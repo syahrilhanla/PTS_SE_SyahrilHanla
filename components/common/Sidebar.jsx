@@ -4,9 +4,50 @@ import { GrTransaction } from "react-icons/gr";
 import { HiOutlineDocumentReport } from "react-icons/hi";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { GiIsland } from "react-icons/gi";
-import Tooltip from "./Tooltip";
+import { useState } from "react";
 
 const Sidebar = () => {
+	const [option, setOption] = useState(1);
+
+	const navButtons = [
+		{
+			link: "/",
+			text: "Transaction",
+			icon: () => <GrTransaction />,
+		},
+		{
+			link: "/users",
+			text: "User Management",
+			icon: () => <HiOutlineDocumentReport />,
+		},
+		{
+			link: "/summary",
+			text: "Summary",
+			icon: () => <AiOutlineUsergroupAdd />,
+		},
+	];
+
+	const Navigations = ({ navButton, option, index }) => {
+		return (
+			<li>
+				<Link href={navButton.link}>
+					<a
+						className={`${
+							option === index + 1 && "bg-gray-100"
+						} flex items-center md:justify-start 
+					justify-center p-2 text-base font-normal 
+					text-gray-900 rounded-lg dark:text-white
+					 hover:bg-gray-200 dark:hover:bg-gray-500`}
+						onClick={() => setOption(index + 1)}
+					>
+						{navButton.icon()}
+						<span className="ml-3 md:block hidden">{navButton.text}</span>
+					</a>
+				</Link>
+			</li>
+		);
+	};
+
 	return (
 		<div className="h-full md:w-64 w-16 z-50">
 			<aside className="h-full md:w-52 w-16 fixed" aria-label="Sidebar">
@@ -25,57 +66,13 @@ const Sidebar = () => {
 
 					{/* Navigations */}
 					<ul className="space-y-6 md:space-y-3 px-3 flex flex-col justify-center">
-						<li>
-							<Link href="/">
-								<a className="flex items-center md:justify-start justify-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-500">
-									<GrTransaction />
-									<span className="ml-3 md:block hidden">Transaction</span>
-								</a>
-							</Link>
-						</li>
-						<li>
-							<Link href="/users">
-								<a
-									className="flex items-center md:justify-start 
-							justify-center p-2 text-base font-normal text-gray-900 rounded-lg 
-							dark:text-white hover:bg-gray-100 dark:hover:bg-gray-500"
-									data-tooltip-target="user-management"
-								>
-									<HiOutlineDocumentReport />
-									<span className="ml-3 md:block hidden">User Management </span>
-									<Tooltip
-										tooltipTarget={"user-management"}
-										message="User Management"
-									/>
-								</a>
-							</Link>
-						</li>
-						<li>
-							<Link href="/summary">
-								<a
-									className="flex items-center md:justify-start 
-							justify-center p-2 text-base font-normal text-gray-900 
-							rounded-lg dark:text-white hover:bg-gray-100
-							 dark:hover:bg-gray-500"
-								>
-									<Tooltip
-										tooltipTarget={"user-management"}
-										message="User Management"
-									/>
-									<AiOutlineUsergroupAdd />
-									<span
-										className="ml-3 md:block hidden"
-										data-tooltip-target="user-management"
-									>
-										Summary
-									</span>
-									{/* <Tooltip
-									tooltipTarget={"user-management"}
-									message="User Management"
-								/> */}
-								</a>
-							</Link>
-						</li>
+						{navButtons.map((navButton, index) => (
+							<Navigations
+								navButton={navButton}
+								index={index}
+								option={option}
+							/>
+						))}
 					</ul>
 				</div>
 			</aside>

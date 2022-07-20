@@ -8,7 +8,7 @@ const Summary = () => {
 			 bg-white rounded-lg border shadow-md overflow-hidden
 			  dark:bg-gray-800 dark:border-gray-700 w-full"
 		>
-			<Heading text={"User Management"} />
+			<Heading text={"Summary of Sales"} />
 			<div className="w-full flex justify-center">
 				<SummaryCard />
 			</div>

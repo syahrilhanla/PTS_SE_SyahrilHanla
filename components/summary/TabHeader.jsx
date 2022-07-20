@@ -1,4 +1,4 @@
-const TabHeader = ({ getOption }) => {
+const TabHeader = ({ getOption, option }) => {
 	const headers = ["Best Sellings", "Revenue Recaps", "Top Customers"];
 
 	return (
@@ -6,11 +6,16 @@ const TabHeader = ({ getOption }) => {
 			<ul className="flex flex-wrap justify-center sm:justify-start -mb-px">
 				{headers.map((header, index) => (
 					<li
-						className="mr-1 inline-block p-2 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+						className={`${
+							option === index + 1 && "text-blue-600 border-blue-500"
+						}
+						 mr-1 inline-block p-2 rounded-t-lg border-b-2
+						 border-transparent hover:text-gray-600 cursor-pointer
+						  hover:border-gray-300 dark:hover:text-gray-300`}
 						key={header}
 						onClick={() => getOption(index + 1)}
 					>
-						<a href="#">{header}</a>
+						<div>{header}</div>
 					</li>
 				))}
 			</ul>

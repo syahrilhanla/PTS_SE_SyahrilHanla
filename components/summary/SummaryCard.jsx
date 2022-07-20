@@ -11,12 +11,12 @@ const SummaryCard = () => {
 
 	return (
 		<div className="min-w-[60vw] place-content-center p-4">
-			<TabHeader getOption={getOption} />
+			<TabHeader getOption={getOption} option={option} />
 			<h2 className="font-medium text-3xl">Overall Transactions: 5</h2>
 
 			{option === 1 && <BestSelling />}
 			{option === 2 && <h1>Option 2</h1>}
-			{option === 3 && <h1>Option 3</h1>}
+			{option === 3 && <BestSelling />}
 		</div>
 	);
 };
