@@ -1,5 +1,6 @@
 import { useState } from "react";
 import BestSelling from "./BestSelling";
+import RevenueCaps from "./RevenueCaps";
 import TabHeader from "./TabHeader";
 
 const SummaryCard = () => {
@@ -15,7 +16,7 @@ const SummaryCard = () => {
 			<h2 className="font-medium text-3xl">Overall Transactions: 5</h2>
 
 			{option === 1 && <BestSelling />}
-			{option === 2 && <h1>Option 2</h1>}
+			{option === 2 && <RevenueCaps />}
 			{option === 3 && <BestSelling />}
 		</div>
 	);
