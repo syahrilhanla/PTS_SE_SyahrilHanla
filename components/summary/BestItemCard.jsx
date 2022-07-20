@@ -1,6 +1,4 @@
-import React from "react";
-
-const ProductCard = () => {
+const BestItemCard = () => {
 	return (
 		<div className="md:max-w-[55vh] max-w-48 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
 			<a href="#">
@@ -17,20 +15,29 @@ const ProductCard = () => {
 					</h5>
 				</a>
 
-				<div className="flex md:flex-row flex-col justify-between items-center mt-3">
-					<span className="text-2xl font-semibold text-gray-800 dark:text-white">
-						$599
-					</span>
-					<a
-						href="#"
-						className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-					>
-						Add to cart
-					</a>
+				<div className="flex md:flex-row flex-col justify-between mt-3">
+					<div className="flex flex-col items-center mt-3">
+						<h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
+							Products Bought
+						</h2>
+						<h3 className="text-4xl font-medium text-gray-800 my-auto dark:text-white">
+							79
+						</h3>
+					</div>
+					<div className="flex flex-col items-center mt-3">
+						<span className="text-2xl font-semibold text-gray-800 dark:text-white">
+							Prices
+						</span>
+						<span className="grid text-md font-normal text-gray-800 text-center dark:text-white">
+							<p>Regular - $123</p>
+							<p>VIP - $110</p>
+							<p>Wholesale - $100</p>
+						</span>
+					</div>
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default ProductCard;
+export default BestItemCard;

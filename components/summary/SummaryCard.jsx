@@ -10,7 +10,7 @@ const SummaryCard = () => {
 	};
 
 	return (
-		<div className="min-w-[60vw] place-content-center px-4">
+		<div className="min-w-[60vw] place-content-center p-4">
 			<TabHeader getOption={getOption} />
 			<h2 className="font-medium text-3xl">Overall Transactions: 5</h2>
 
