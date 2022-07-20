@@ -6,7 +6,7 @@ import ProductCatalogue from "./ProductCatalogue";
 const Header = () => {
 	return (
 		<div>
-			<Heading />
+			<Heading text={"The Island Shop"} />
 			<Categories />
 		</div>
 	);

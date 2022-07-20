@@ -5,7 +5,7 @@ const OrderedItemCard = () => {
 				<div className="flex-shrink-0">
 					<img
 						className="w-14 h-14 rounded-md"
-						src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
+						src="https://flowbite.com/docs/images/products/apple-watch.png"
 						alt="Neil image"
 					/>
 				</div>
