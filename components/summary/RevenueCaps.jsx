@@ -10,7 +10,7 @@ const RevenueCaps = () => {
 
 			<h3 className="font-medium text-2xl mb-1 mt-6">Revenue of The Day</h3>
 			<hr className="mb-3" />
-			<CategoryRevCard />
+			<CategoryRevCard revenueOfDay={true} />
 
 			<h3 className="font-medium text-2xl mb-1 mt-6">Daily Revenues Graphs</h3>
 			<hr className="mb-3" />

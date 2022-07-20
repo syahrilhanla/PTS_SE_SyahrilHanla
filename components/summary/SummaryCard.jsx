@@ -1,4 +1,5 @@
 import { useState } from "react";
+import BestCustomers from "./BestCustomers";
 import BestSelling from "./BestSelling";
 import RevenueCaps from "./RevenueCaps";
 import TabHeader from "./TabHeader";
@@ -17,7 +18,7 @@ const SummaryCard = () => {
 
 			{option === 1 && <BestSelling />}
 			{option === 2 && <RevenueCaps />}
-			{option === 3 && <BestSelling />}
+			{option === 3 && <BestCustomers />}
 		</div>
 	);
 };

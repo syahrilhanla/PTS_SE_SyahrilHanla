@@ -21,7 +21,7 @@ const Rank = ({ stars }) => {
 	);
 };
 
-const CategoryList = ({ data }) => {
+const CategoryList = ({ data, revenueOfDay }) => {
 	return (
 		<li className="py-3 sm:py-4">
 			<div className="flex items-center space-x-4">
@@ -37,7 +37,8 @@ const CategoryList = ({ data }) => {
 					</p>
 				</div>
 				{/* Rank of category */}
-				<Rank stars={1} />
+				{revenueOfDay && <Rank stars={1} />}
+
 				{/* Rank of category */}
 
 				<div className="inline-flex items-center text-xl font-semibold text-gray-900 dark:text-white">
@@ -48,7 +49,7 @@ const CategoryList = ({ data }) => {
 	);
 };
 
-const CategoryRevCard = () => {
+const CategoryRevCard = ({ revenueOfDay }) => {
 	return (
 		<div className="w-full flex justify-center">
 			<div className="w-full p-4 max-w-md bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
@@ -67,7 +68,7 @@ const CategoryRevCard = () => {
 						className="divide-y divide-gray-200 dark:divide-gray-700"
 					>
 						{[1, 2, 3].map((item) => (
-							<CategoryList key={item} />
+							<CategoryList key={item} revenueOfDay={revenueOfDay} />
 						))}
 					</ul>
 				</div>

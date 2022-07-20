@@ -18,12 +18,12 @@ const Sidebar = () => {
 		{
 			link: "/users",
 			text: "User Management",
-			icon: () => <HiOutlineDocumentReport />,
+			icon: () => <AiOutlineUsergroupAdd />,
 		},
 		{
 			link: "/summary",
 			text: "Summary",
-			icon: () => <AiOutlineUsergroupAdd />,
+			icon: () => <HiOutlineDocumentReport />,
 		},
 	];
 
