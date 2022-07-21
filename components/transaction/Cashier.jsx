@@ -7,7 +7,7 @@ import OrderedItemCard from "./OrderedItemCard";
 import PurchaseInfo from "./PurchaseInfo";
 
 const Cashier = () => {
-	const { currentBuyer, setCurrentBuyer, buyerList } =
+	const { currentBuyer, setCurrentBuyer, buyerList, orderedItem } =
 		useContext(GlobalContext);
 
 	return (
@@ -39,8 +39,10 @@ const Cashier = () => {
 					className="max-h-[60vh] px-3 md:px-0  overflow-y-auto divide-y space-y-2
            divide-gray-200 dark:divide-gray-700 mb-2"
 				>
-					<OrderedItemCard />
-					<OrderedItemCard />
+					{orderedItem &&
+						orderedItem.map((item) => (
+							<OrderedItemCard item={item} key={item.name} />
+						))}
 				</ul>
 			</div>
 
