@@ -26,6 +26,7 @@ const DataProvider = ({ children }) => {
 	// CART PROCESSING
 	const [orderedItem, setOrderedItem] = useState([]);
 	const [totalPrice, setTotalPrice] = useState(null);
+	const [duplicateItem, setDuplicateItem] = useState([]);
 	const [showToast, setShowToast] = useState({
 		toastMessage:
 			"Due to stock shortage customer now can only buy 1 (one) kind of item in a transaction per day. We are really sorry for the inconvenience.",
@@ -59,11 +60,14 @@ const DataProvider = ({ children }) => {
 		// if price not found then item not added and showing error message
 		if (priceInTotal.length < 1) {
 			setupToast("Customer Type Does Not Match With Item", "danger");
+			// exit function if price does not match
+			return;
 		}
 
 		// if conditions on buyer's type fulfilled then add item to cart
 		const newItem = {
 			...item,
+			buyerName: currentBuyer.name,
 			qty: 1,
 			initialPrice: priceInTotal[0].price,
 			priceInTotal: {
@@ -122,6 +126,49 @@ const DataProvider = ({ children }) => {
 		setOrderedItem(modifiedItem.filter((item) => item !== undefined));
 	};
 
+	const handleTransaction = async () => {
+		const selectedDetails = orderedItem.map((item) => {
+			return {
+				itemName: item.name,
+				buyer: item.buyerName,
+				qty: item.qty,
+				totalPrice: item.priceInTotal.price,
+			};
+		});
+
+		const submittedDetails = {
+			details: [...selectedDetails],
+			buyer: orderedItem[0].buyerName,
+		};
+
+		const transactionData = await fetchTransaction();
+
+		// loop through array then filter to find same user transaction history
+
+		// const buyerItem = transactionData
+		// 	.map((transaction) =>
+		// 		transaction.filter(
+		// 			(transaction) => transaction.buyer === submittedDetails.buyer
+		// 		)
+		// 	)
+		// 	.filter((data) => data.length > 0)[0];
+
+		// flatten array first then filter immediately to get buyer history
+		const buyerItem = transactionData
+			.flat(2)
+			.filter((transaction) => transaction.buyer === submittedDetails.buyer);
+
+		// get duplicates in buyer history
+		const duplicatedItem = submittedDetails.details
+			.map((detail) =>
+				buyerItem.filter((item) => item.itemName === detail.itemName)
+			)
+			.filter((duplicate) => duplicate.length > 0)
+			.flat();
+
+		console.log(duplicatedItem);
+	};
+
 	const dataSetter = () => {
 		fetchBuyers().then((data) => setBuyerList(data));
 		fetchItem().then((data) => setItemList(data));
@@ -148,6 +195,8 @@ const DataProvider = ({ children }) => {
 				countItemPrice,
 				setupToast,
 				showToast,
+				handleTransaction,
+				duplicateItem,
 			}}
 		>
 			{children}

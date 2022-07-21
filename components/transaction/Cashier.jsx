@@ -14,6 +14,7 @@ const Cashier = () => {
 		orderedItem,
 		totalPrice,
 		countItemPrice,
+		handleTransaction,
 	} = useContext(GlobalContext);
 
 	return (
@@ -67,6 +68,7 @@ const Cashier = () => {
 					  focus:outline-none dark:focus:ring-blue-800 flex justify-center items-center
 						disabled:cursor-not-allowed"
 					disabled={orderedItem.length > 0 ? false : true}
+					onClick={() => handleTransaction()}
 				>
 					<p className="text-lg font-medium">Print Receipt</p>
 					<BsCartCheck className="w-6 h-6" />

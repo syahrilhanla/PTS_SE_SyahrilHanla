@@ -13,15 +13,15 @@ const ToastComponent = ({ showToast, setupToast }) => {
 	return (
 		<div className={`fixed top-5 md:left-[35%] left-24 w-96`}>
 			<div
-				class="flex items-center p-4 mb-4 text-gray-500
+				className="flex items-center p-4 mb-4 text-gray-500
          bg-red-100 rounded-lg shadow 
          dark:text-gray-400 dark:bg-gray-800"
 				role="alert"
 			>
-				<div class="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-red-500 bg-red-200 rounded-lg dark:bg-red-700 dark:text-red-200 border border-red-300">
+				<div className="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-red-500 bg-red-200 rounded-lg dark:bg-red-700 dark:text-red-200 border border-red-300">
 					<GoStop />
 				</div>
-				<div class="ml-3 p-3 text-sm font-normal text-center">
+				<div className="ml-3 p-3 text-sm font-normal text-center">
 					{showToast.toastMessage}
 				</div>
 				<button
