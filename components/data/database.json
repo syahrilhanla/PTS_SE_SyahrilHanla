@@ -50,6 +50,17 @@
 			]
 		},
 		{
+			"name": "Tuxedo",
+			"type": "tops",
+			"image": "/assets/products/tuxedo.jpg",
+			"prices": [
+				{
+					"priceFor": "VIP",
+					"price": 80000
+				}
+			]
+		},
+		{
 			"name": "Mens Shorts",
 			"type": "shorts",
 			"image": "/assets/products/shorts.jpg",
