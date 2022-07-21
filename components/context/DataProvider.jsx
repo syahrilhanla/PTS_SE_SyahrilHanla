@@ -26,7 +26,10 @@ const DataProvider = ({ children }) => {
 	// CART PROCESSING
 	const [orderedItem, setOrderedItem] = useState([]);
 	const [totalPrice, setTotalPrice] = useState(null);
-	const [showToast, setShowToast] = useState("");
+	const [showToast, setShowToast] = useState({
+		toastMessage: "",
+		eventType: "",
+	});
 
 	useEffect(() => {
 		countTotalPrice(orderedItem);
