@@ -15,6 +15,7 @@ const Cashier = () => {
 		totalPrice,
 		countItemPrice,
 		handleTransaction,
+		duplicateItem,
 	} = useContext(GlobalContext);
 
 	return (
@@ -43,7 +44,7 @@ const Cashier = () => {
 			<div className="mt-8">
 				<ul
 					role="list"
-					className="max-h-[60vh] px-3 md:px-0  overflow-y-auto divide-y space-y-2
+					className="max-h-[60vh] px-3 md:px-0  overflow-y-auto space-y-2
            divide-gray-200 dark:divide-gray-700 mb-2"
 				>
 					{orderedItem.length > 0 &&
@@ -52,6 +53,7 @@ const Cashier = () => {
 								item={item}
 								key={item.name}
 								countItemPrice={countItemPrice}
+								duplicateItem={duplicateItem}
 							/>
 						))}
 				</ul>
@@ -67,7 +69,9 @@ const Cashier = () => {
 					 text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700
 					  focus:outline-none dark:focus:ring-blue-800 flex justify-center items-center
 						disabled:cursor-not-allowed"
-					disabled={orderedItem.length > 0 ? false : true}
+					disabled={
+						duplicateItem.length < 1 && orderedItem.length > 0 ? false : true
+					}
 					onClick={() => handleTransaction()}
 				>
 					<p className="text-lg font-medium">Print Receipt</p>

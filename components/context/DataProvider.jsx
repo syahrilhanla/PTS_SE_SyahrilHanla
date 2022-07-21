@@ -36,8 +36,14 @@ const DataProvider = ({ children }) => {
 	useEffect(() => {
 		countTotalPrice(orderedItem);
 		if (orderedItem.length === 0) setTotalPrice(null);
+		if (duplicateItem.length > 0) removeDuplicate();
 	}, [orderedItem]);
-	// CURRENT BUYER
+	// CART PROCESSING
+
+	useEffect(() => {
+		setOrderedItem([]);
+		setTotalPrice(null);
+	}, [currentBuyer]);
 
 	// toaster setup
 	const setupToast = (toastMessage, eventType) => {
@@ -97,8 +103,6 @@ const DataProvider = ({ children }) => {
 				setOrderedItem([...duplicateOrdered, newItem]);
 			}
 		}
-
-		// make new object to add quantity and price for item
 	};
 
 	const countTotalPrice = (orderedItem) => {
@@ -167,7 +171,17 @@ const DataProvider = ({ children }) => {
 			.filter((duplicate) => duplicate.length > 0)
 			.flat();
 
-		console.log(duplicatedItem);
+		setDuplicateItem(duplicatedItem);
+	};
+
+	const removeDuplicate = () => {
+		const removedDuplicate = duplicateItem
+			.map((duplicate) =>
+				orderedItem.filter((item) => item.name === duplicate.itemName)
+			)
+			.flat()[0];
+
+		if (!removedDuplicate) setDuplicateItem([]);
 	};
 
 	const dataSetter = () => {
