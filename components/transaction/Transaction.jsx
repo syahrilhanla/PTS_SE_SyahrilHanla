@@ -15,7 +15,7 @@ const Transaction = () => {
 			  dark:bg-gray-800 dark:border-gray-700 w-full"
 			>
 				<div>
-					<Heading text={"The Island Shop"} />
+					<Heading text={"Catalogue"} />
 					<Categories setCategory={setCategory} />
 				</div>
 				<ProductCatalogue category={category} />
