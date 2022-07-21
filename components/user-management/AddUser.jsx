@@ -48,7 +48,7 @@ const AddUser = () => {
 							htmlFor="email"
 							className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
 						>
-							Customer's Name
+							Customer Name
 						</label>
 						<input
 							type="text"

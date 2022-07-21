@@ -6,8 +6,9 @@ const Rank = ({ stars }) => {
 		<div className="flex items-center">
 			{Array(stars)
 				.fill(0, 0)
-				.map((star) => (
+				.map((star, index) => (
 					<svg
+						key={index}
 						aria-hidden="true"
 						className="w-5 h-5 text-yellow-400"
 						fill="currentColor"
