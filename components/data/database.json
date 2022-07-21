@@ -92,31 +92,16 @@
 		}
 	],
 	"Transaction": [
-		{
-			"item": "magic shirt",
-			"qty": 1,
-			"buyer": "Ani"
-		},
-		{
-			"item": "square hat",
-			"qty": 2,
-			"buyer": "Budi"
-		},
-		{
-			"item": "magic shirt",
-			"qty": 1,
-			"buyer": "Ani"
-		},
-		{
-			"item": "oval hat",
-			"qty": 1,
-			"buyer": "Ani"
-		},
-		{
-			"item": "square hat",
-			"qty": 100,
-			"buyer": "Dipta"
-		}
+		[{ "itemName": "Mens Top", "buyer": "Ani", "qty": 2, "totalPrice": 60000 }],
+		[
+			{
+				"itemName": "Blue Hat",
+				"buyer": "Budi",
+				"qty": 1,
+				"totalPrice": 15000
+			},
+			{ "itemName": "Mens Top", "buyer": "Budi", "qty": 1, "totalPrice": 30000 }
+		]
 	],
 	"Summary": {
 		"totalTransaction": 5,
