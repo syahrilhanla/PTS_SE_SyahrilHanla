@@ -81,16 +81,16 @@ const DataProvider = ({ children }) => {
 				priceFor: priceInTotal[0].priceFor,
 			},
 		};
-		let duplicateOrdered = [...orderedItem];
+		let newOrderedItem = [...orderedItem];
 
-		if (duplicateOrdered.length < 1) {
+		if (newOrderedItem.length < 1) {
 			setOrderedItem([newItem]);
 		} else {
 			// if there's same item then only add the qty of the item
 			let isSame = false;
 
 			// check if there's same entry
-			duplicateOrdered.forEach((oldItem) => {
+			newOrderedItem.forEach((oldItem) => {
 				if (oldItem.name === newItem.name) {
 					setupToast("Item has already been added to Shopping Cart", "danger");
 					isSame = true;
@@ -98,9 +98,9 @@ const DataProvider = ({ children }) => {
 			});
 
 			if (isSame) {
-				setOrderedItem([...duplicateOrdered]);
+				setOrderedItem([...newOrderedItem]);
 			} else {
-				setOrderedItem([...duplicateOrdered, newItem]);
+				setOrderedItem([...newOrderedItem, newItem]);
 			}
 		}
 	};
