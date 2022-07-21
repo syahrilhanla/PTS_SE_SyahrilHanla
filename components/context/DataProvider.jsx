@@ -34,13 +34,25 @@ const DataProvider = ({ children }) => {
 	}, [orderedItem]);
 	// CURRENT BUYER
 
-	const addItemToCart = (orderedItem, item) => {
-		const newItem = { ...item, qty: 1, priceInTotal: item.prices[0].price };
+	const addItemToCart = (orderedItem, item, buyerType) => {
+		// get price for certain type of buyer
+		let priceInTotal = item.prices.filter(
+			(item) => item.priceFor === buyerType
+		);
+
+		// if price for VIP or wholesale not found then return price for regular
+		if (priceInTotal.length < 1) {
+			priceInTotal = item.prices.filter((item) => item.priceFor === "regular");
+		}
+
+		// make new object to add quantity and price for item
+		const newItem = { ...item, qty: 1, priceInTotal: priceInTotal[0].price };
 		let duplicateOrdered = [...orderedItem];
 
 		if (duplicateOrdered.length < 1) {
 			setOrderedItem([newItem]);
 		} else {
+			// if there's same item then only add the qty of the item
 			let isSame;
 			let newOrderedItem = duplicateOrdered.map((oldItem) => {
 				if (oldItem.name === newItem.name) {
