@@ -3,7 +3,7 @@ import { GoStop } from "react-icons/go";
 const ToastComponent = ({ showToast, setupToast }) => {
 	if (
 		showToast.toastMessage !==
-		"Due to stock shortage customer now can only buy 1 (one) kind of item in a transaction per day. We are really sorry for the inconvenience."
+		"Due to stock shortage customer now can only buy 1 (one) kind of item in a transaction per day. We are really sorry for the inconvenience. As compensation, please kindly take our offering of Free Shipment. Sincerely yours, The Island Shop."
 	) {
 		setTimeout(() => {
 			setupToast("");
@@ -11,7 +11,7 @@ const ToastComponent = ({ showToast, setupToast }) => {
 	}
 
 	return (
-		<div className={`fixed top-10 lg:left-[10%] mx-12 z-50 left-0`}>
+		<div className={`fixed top-10 mx-12 z-50 left-0`}>
 			<div
 				className="flex items-center p-4 mb-4 text-gray-500
          bg-red-100 rounded-lg shadow 
