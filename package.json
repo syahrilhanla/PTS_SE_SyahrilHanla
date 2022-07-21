@@ -4,8 +4,8 @@
 	"private": true,
 	"scripts": {
 		"dev": "concurrently --kill-others \"next dev\" \"npx json-server --watch components/data/database.json --port 8000\"",
-		"build": "concurrently --kill-others \"next dev\" \"npx json-server --watch components/data/database.json --port 8000\"",
-		"start": "concurrently --kill-others \"next dev\" \"npx json-server --watch components/data/database.json --port 8000\"",
+		"build": "next build",
+		"start": "next start",
 		"lint": "next lint"
 	},
 	"dependencies": {
@@ -14,7 +14,8 @@
 		"next": "12.2.2",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
-		"react-icons": "^4.4.0"
+		"react-icons": "^4.4.0",
+		"recharts": "^2.1.12"
 	},
 	"devDependencies": {
 		"autoprefixer": "^10.4.7",

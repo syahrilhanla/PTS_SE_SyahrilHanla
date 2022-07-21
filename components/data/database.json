@@ -1,9 +1,9 @@
 {
 	"Items": [
 		{
-			"name": "oval hat",
+			"name": "Black Hat",
 			"type": "hats",
-			"image": "/assets/product/oval-hat.png",
+			"image": "/assets/products/black-hat.jpg",
 			"prices": [
 				{
 					"priceFor": "regular",
@@ -16,8 +16,24 @@
 			]
 		},
 		{
-			"name": "square hat",
+			"name": "Blue Hat",
 			"type": "hats",
+			"image": "/assets/products/blue-hats.jpg",
+			"prices": [
+				{
+					"priceFor": "regular",
+					"price": 20000
+				},
+				{
+					"priceFor": "VIP",
+					"price": 15000
+				}
+			]
+		},
+		{
+			"name": "Mens Top",
+			"type": "tops",
+			"image": "/assets/products/tops.jpg",
 			"prices": [
 				{
 					"priceFor": "regular",
@@ -34,8 +50,21 @@
 			]
 		},
 		{
-			"name": "magic shirt",
+			"name": "Tuxedo",
 			"type": "tops",
+			"image": "/assets/products/tuxedo.jpg",
+			"prices": [
+				{
+					"priceFor": "VIP",
+					"price": 80000
+				}
+			]
+		},
+		{
+			"name": "Mens Shorts",
+			"type": "shorts",
+			"image": "/assets/products/shorts.jpg",
+
 			"prices": [
 				{
 					"priceFor": "regular",
@@ -63,31 +92,16 @@
 		}
 	],
 	"Transaction": [
-		{
-			"item": "magic shirt",
-			"qty": 1,
-			"buyer": "Ani"
-		},
-		{
-			"item": "square hat",
-			"qty": 2,
-			"buyer": "Budi"
-		},
-		{
-			"item": "magic shirt",
-			"qty": 1,
-			"buyer": "Ani"
-		},
-		{
-			"item": "oval hat",
-			"qty": 1,
-			"buyer": "Ani"
-		},
-		{
-			"item": "square hat",
-			"qty": 100,
-			"buyer": "Dipta"
-		}
+		[{ "itemName": "Mens Top", "buyer": "Ani", "qty": 2, "totalPrice": 60000 }],
+		[
+			{
+				"itemName": "Blue Hat",
+				"buyer": "Budi",
+				"qty": 1,
+				"totalPrice": 15000
+			},
+			{ "itemName": "Mens Top", "buyer": "Budi", "qty": 1, "totalPrice": 30000 }
+		]
 	],
 	"Summary": {
 		"totalTransaction": 5,
