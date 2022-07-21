@@ -81,20 +81,21 @@ const DataProvider = ({ children }) => {
 			setOrderedItem([newItem]);
 		} else {
 			// if there's same item then only add the qty of the item
-			let isSame;
-			let newOrderedItem = duplicateOrdered.map((oldItem) => {
+			let isSame = false;
+
+			// check if there's same entry
+			duplicateOrdered.forEach((oldItem) => {
 				if (oldItem.name === newItem.name) {
-					oldItem.qty++;
+					setupToast("Item has already been added to Shopping Cart", "danger");
 					isSame = true;
-					return oldItem;
-				} else {
-					return oldItem;
 				}
 			});
 
 			if (isSame) {
-				setOrderedItem([...newOrderedItem]);
-			} else setOrderedItem([...newOrderedItem, newItem]);
+				setOrderedItem([...duplicateOrdered]);
+			} else {
+				setOrderedItem([...duplicateOrdered, newItem]);
+			}
 		}
 
 		// make new object to add quantity and price for item
