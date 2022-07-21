@@ -34,7 +34,7 @@ const CustomerDropdown = ({ buyers, setCurrentBuyer }) => {
 					aria-labelledby="dropdownDividerButton"
 				>
 					{buyers.map((buyer) => (
-						<li>
+						<li key={buyer.name}>
 							<button
 								className="flex justify-between w-full py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
 								onClick={() => {

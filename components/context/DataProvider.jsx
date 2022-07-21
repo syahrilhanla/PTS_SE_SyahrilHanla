@@ -18,10 +18,44 @@ const DataProvider = ({ children }) => {
 
 	// ITEM DATA
 
+	// CURRENT BUYER
 	const [currentBuyer, setCurrentBuyer] = useState({
 		name: "Select",
 		type: "regular",
 	});
+	// CURRENT BUYER
+
+	// CART ITEMS
+	const [orderedItem, setOrderedItem] = useState([]);
+
+	useEffect(() => {
+		console.log(orderedItem);
+	}, [orderedItem]);
+	// CURRENT BUYER
+
+	const addItemToCart = (orderedItem, item) => {
+		const newItem = { ...item, qty: 1 };
+		let duplicateOrdered = [...orderedItem];
+
+		if (duplicateOrdered.length < 1) {
+			setOrderedItem([newItem]);
+		} else {
+			let isSame;
+			let newOrderedItem = duplicateOrdered.map((oldItem) => {
+				if (oldItem.name === newItem.name) {
+					oldItem.qty++;
+					isSame = true;
+					return oldItem;
+				} else {
+					return oldItem;
+				}
+			});
+
+			if (isSame) {
+				setOrderedItem([...newOrderedItem]);
+			} else setOrderedItem([...newOrderedItem, newItem]);
+		}
+	};
 
 	const dataSetter = () => {
 		fetchBuyers().then((data) => setBuyerList(data));
@@ -43,6 +77,8 @@ const DataProvider = ({ children }) => {
 				summary,
 				currentBuyer,
 				setCurrentBuyer,
+				addItemToCart,
+				orderedItem,
 			}}
 		>
 			{children}
