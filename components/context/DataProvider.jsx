@@ -27,8 +27,9 @@ const DataProvider = ({ children }) => {
 	const [orderedItem, setOrderedItem] = useState([]);
 	const [totalPrice, setTotalPrice] = useState(null);
 	const [showToast, setShowToast] = useState({
-		toastMessage: "",
-		eventType: "",
+		toastMessage:
+			"Due to stock shortage customer now can only buy 1 (one) kind of item in a transaction per day. We are really sorry for the inconvenience.",
+		eventType: "danger",
 	});
 
 	useEffect(() => {

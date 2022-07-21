@@ -29,11 +29,11 @@ const Cashier = () => {
 						</h5>
 					</div>
 				</div>
-				<div className="flex justify-end">
+				<div className="flex justify-end md:px-0 px-3">
 					<p className="text-base font-light">{currentBuyer.type}</p>
 				</div>
 			</div>
-			<div className="w-full flex justify-center">
+			<div className="w-full flex justify-center mt-4">
 				<CustomerDropdown
 					buyers={buyerList}
 					setCurrentBuyer={setCurrentBuyer}
