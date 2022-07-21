@@ -27,11 +27,11 @@ const DataProvider = ({ children }) => {
 
 	// CART PROCESSING
 	const [orderedItem, setOrderedItem] = useState([]);
-	const [totalPrice, setTotalPrice] = useState("");
+	const [totalPrice, setTotalPrice] = useState(null);
 
 	useEffect(() => {
 		countTotalPrice(orderedItem);
-		console.log(orderedItem);
+		if (orderedItem.length === 0) setTotalPrice(null);
 	}, [orderedItem]);
 	// CURRENT BUYER
 
@@ -70,27 +70,22 @@ const DataProvider = ({ children }) => {
 	};
 
 	const countItemPrice = (selectedItem, action) => {
-		const modifiedItem = orderedItem.map((currentItem) => {
+		const modifiedItem = orderedItem.map((currentItem, index) => {
 			if (currentItem.name === selectedItem.name) {
-				if (currentItem.qty >= 1) {
-					if (action === "subtract") {
-						currentItem.qty--;
-						currentItem.priceInTotal =
-							currentItem.prices[0].price * currentItem.qty;
-					} else if (action === "add") {
-						currentItem.qty++;
-						currentItem.priceInTotal =
-							currentItem.prices[0].price * currentItem.qty;
-					}
-					return currentItem;
-				} else {
-					return;
-					// return nothing or delete it
+				if (action === "subtract") {
+					currentItem.qty--;
+					currentItem.priceInTotal =
+						currentItem.prices[0].price * currentItem.qty;
+				} else if (action === "add") {
+					currentItem.qty++;
+					currentItem.priceInTotal =
+						currentItem.prices[0].price * currentItem.qty;
 				}
+				if (currentItem.qty > 0) return currentItem;
 			} else return currentItem;
 		});
 
-		setOrderedItem(modifiedItem);
+		setOrderedItem(modifiedItem.filter((item) => item !== undefined));
 	};
 
 	const dataSetter = () => {
