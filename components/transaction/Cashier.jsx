@@ -1,9 +1,15 @@
+import { useContext } from "react";
 import { BsCartCheck } from "react-icons/bs";
+import { GlobalContext } from "../context/DataProvider";
+import CustomerDropdown from "./CustomerDropdown";
 
 import OrderedItemCard from "./OrderedItemCard";
 import PurchaseInfo from "./PurchaseInfo";
 
 const Cashier = () => {
+	const { currentBuyer, setCurrentBuyer, buyerList } =
+		useContext(GlobalContext);
+
 	return (
 		<div className="mx-3 h-fit md:mx-4 py-4 px-4 my-3 overflow-auto max-w-md bg-white rounded-lg border shadow-md sm:pt-8 sm:px-5 dark:bg-gray-800 dark:border-gray-700">
 			<div>
@@ -13,13 +19,19 @@ const Cashier = () => {
 					</h3>
 					<div className="flex flex-col">
 						<h5 className="text-2xl px-3 md:px-0 font-semibold leading-none text-gray-900 dark:text-white">
-							Steven
+							{currentBuyer.name}
 						</h5>
 					</div>
 				</div>
 				<div className="flex justify-end">
-					<p className="text-base font-light">Regular</p>
+					<p className="text-base font-light">{currentBuyer.type}</p>
 				</div>
+			</div>
+			<div className="w-full flex justify-center">
+				<CustomerDropdown
+					buyers={buyerList}
+					setCurrentBuyer={setCurrentBuyer}
+				/>
 			</div>
 			<div className="mt-8">
 				<ul

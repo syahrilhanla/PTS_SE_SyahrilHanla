@@ -22,7 +22,6 @@ const Categories = ({ setCategory }) => {
 					{number === 4 && <GiShorts className="w-8 h-8 text-slate-100" />}
 					<div className="flex flex-col justify-center items-center">
 						<h2 className="">{category}</h2>
-						<p className="font-light text-xs">64 items</p>
 					</div>
 				</button>
 			</div>
