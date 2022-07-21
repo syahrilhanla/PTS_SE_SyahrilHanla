@@ -29,7 +29,7 @@ const OrderedItemCard = ({ item, countItemPrice }) => {
 						</button>
 						<span>{item.qty}</span>
 						<button
-							class="py-0.5 px-1.5 bg-slate-100 shadow-md
+							className="py-0.5 px-1.5 bg-slate-100 shadow-md
 						 border-slate-200 border hover:bg-slate-50"
 							onClick={() => countItemPrice(item, "add")}
 						>

@@ -8,7 +8,7 @@ const TableRow = () => {
 				scope="row"
 				className="text-center py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
 			>
-				Apple MacBook Pro 17"
+				Apple MacBook Pro 17
 			</th>
 			<td className="py-4 px-6">Sliver</td>
 			<td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
