@@ -1,18 +1,12 @@
+import { useState } from "react";
 import Categories from "../common/Categories";
 import Heading from "../common/Heading";
 import Cashier from "./Cashier";
 import ProductCatalogue from "./ProductCatalogue";
 
-const Header = () => {
-	return (
-		<div>
-			<Heading text={"The Island Shop"} />
-			<Categories />
-		</div>
-	);
-};
-
 const Transaction = () => {
+	const [category, setCategory] = useState("All Item");
+
 	return (
 		<div className="grid sm:grid-cols-[7fr_4fr] w-full">
 			<div
@@ -20,8 +14,11 @@ const Transaction = () => {
 			 bg-white rounded-lg border shadow-md
 			  dark:bg-gray-800 dark:border-gray-700 w-full"
 			>
-				<Header />
-				<ProductCatalogue />
+				<div>
+					<Heading text={"The Island Shop"} />
+					<Categories setCategory={setCategory} />
+				</div>
+				<ProductCatalogue category={category} />
 			</div>
 			<Cashier />
 		</div>

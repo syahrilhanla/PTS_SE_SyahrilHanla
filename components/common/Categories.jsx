@@ -2,11 +2,12 @@ import { BsFillHandbagFill } from "react-icons/bs";
 import { FaHatCowboy, FaTshirt } from "react-icons/fa";
 import { GiShorts } from "react-icons/gi";
 
-const Categories = () => {
+const Categories = ({ setCategory }) => {
 	const CardCategory = ({ category, number }) => {
 		return (
 			<div className="w-full">
 				<button
+					onClick={() => setCategory(category)}
 					type="button"
 					className="w-full text-white bg-blue-500 hover:bg-blue-600 focus:ring-4
 					 focus:ring-blue-200 font-medium rounded-lg gap-4

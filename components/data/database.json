@@ -1,9 +1,9 @@
 {
 	"Items": [
 		{
-			"name": "oval hat",
+			"name": "Black Hat",
 			"type": "hats",
-			"image": "/assets/product/oval-hat.png",
+			"image": "/assets/products/black-hat.jpg",
 			"prices": [
 				{
 					"priceFor": "regular",
@@ -16,8 +16,24 @@
 			]
 		},
 		{
-			"name": "square hat",
+			"name": "Blue Hat",
 			"type": "hats",
+			"image": "/assets/products/blue-hats.jpg",
+			"prices": [
+				{
+					"priceFor": "regular",
+					"price": 20000
+				},
+				{
+					"priceFor": "VIP",
+					"price": 15000
+				}
+			]
+		},
+		{
+			"name": "Mens Top",
+			"type": "tops",
+			"image": "/assets/products/tops.jpg",
 			"prices": [
 				{
 					"priceFor": "regular",
@@ -34,8 +50,10 @@
 			]
 		},
 		{
-			"name": "magic shirt",
-			"type": "tops",
+			"name": "Mens Shorts",
+			"type": "shorts",
+			"image": "/assets/products/shorts.jpg",
+
 			"prices": [
 				{
 					"priceFor": "regular",
