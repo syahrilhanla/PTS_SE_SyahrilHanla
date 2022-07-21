@@ -18,7 +18,7 @@ const Cashier = () => {
 	} = useContext(GlobalContext);
 
 	return (
-		<div className="mx-3 h-fit md:mx-4 py-4 px-4 my-3 overflow-auto max-w-md bg-white rounded-lg border shadow-md sm:pt-8 sm:px-5 dark:bg-gray-800 dark:border-gray-700">
+		<div className="mx-3 h-fit lg:mx-4 py-4 px-4 my-3 overflow-auto max-w-lg bg-white rounded-lg border shadow-md sm:pt-8 sm:px-5 dark:bg-gray-800 dark:border-gray-700">
 			<div>
 				<div className="flex justify-between items-center py-0">
 					<h3 className="text-2xl px-3 md:px-0 font-semibold leading-none text-gray-900 dark:text-white">

@@ -8,9 +8,9 @@ const Transaction = () => {
 	const [category, setCategory] = useState("All Item");
 
 	return (
-		<div className="grid md:grid-cols-[7fr_4fr] w-full">
+		<div className="grid lg:grid-cols-[7fr_4fr] w-full">
 			<div
-				className="md:my-3 h-min md:mx-1 py-5 md:py-0 sm:px-5
+				className="lg:my-3 h-min lg:mx-1 py-5 lg:py-0 sm:px-5
 			 bg-white rounded-lg border shadow-md
 			  dark:bg-gray-800 dark:border-gray-700 w-full"
 			>
@@ -20,7 +20,9 @@ const Transaction = () => {
 				</div>
 				<ProductCatalogue category={category} />
 			</div>
-			<Cashier />
+			<span className="w-full lg:block grid justify-center">
+				<Cashier />
+			</span>
 		</div>
 	);
 };

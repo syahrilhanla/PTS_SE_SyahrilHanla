@@ -25,7 +25,7 @@ const ProductCard = ({ item }) => {
 	return (
 		<div className="md:w-52 w-48 bg-white rounded-lg shadow-md flex flex-col justify-center dark:bg-gray-800 dark:border-gray-700">
 			<img
-				className="p-8 rounded-t-lg h-56 "
+				className="p-8 rounded-t-lg md:h-56 h-fit "
 				src={item.image}
 				alt={item.name}
 			/>
