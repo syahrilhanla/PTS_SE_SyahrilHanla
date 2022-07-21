@@ -9,18 +9,16 @@ import {
 export const GlobalContext = createContext();
 
 const DataProvider = ({ children }) => {
-	// ITEM DATA
-
+	// INITIAL ITEM DATA
 	const [buyerList, setBuyerList] = useState([]);
 	const [itemList, setItemList] = useState([]);
 	const [transactions, setTransactions] = useState([]);
 	const [summary, setSummary] = useState({});
-
-	// ITEM DATA
+	// INITIAL ITEM DATA
 
 	// CURRENT BUYER
 	const [currentBuyer, setCurrentBuyer] = useState({
-		name: "Select",
+		name: "Select Buyer",
 		type: "regular",
 	});
 	// CURRENT BUYER
@@ -28,6 +26,7 @@ const DataProvider = ({ children }) => {
 	// CART PROCESSING
 	const [orderedItem, setOrderedItem] = useState([]);
 	const [totalPrice, setTotalPrice] = useState(null);
+	const [showToast, setShowToast] = useState("");
 
 	useEffect(() => {
 		countTotalPrice(orderedItem);
@@ -57,6 +56,11 @@ const DataProvider = ({ children }) => {
 				setOrderedItem([...newOrderedItem]);
 			} else setOrderedItem([...newOrderedItem, newItem]);
 		}
+	};
+
+	const setupToast = (toastMessage, eventType) => {
+		if (toastMessage === "") setShowToast("");
+		setShowToast({ toastMessage, eventType });
 	};
 
 	const countTotalPrice = (orderedItem) => {
@@ -112,6 +116,8 @@ const DataProvider = ({ children }) => {
 				orderedItem,
 				totalPrice,
 				countItemPrice,
+				setupToast,
+				showToast,
 			}}
 		>
 			{children}
