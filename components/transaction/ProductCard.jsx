@@ -8,7 +8,7 @@ const ProductCard = ({ item }) => {
 		if (item.prices.filter((price) => price.priceFor === category).length > 0) {
 			return (
 				<p>
-					{category} -{" "}
+					{category} - Rp.{" "}
 					{item.prices.filter((price) => price.priceFor === category)[0].price}
 				</p>
 			);
@@ -16,10 +16,12 @@ const ProductCard = ({ item }) => {
 	};
 
 	return (
-		<div className="md:max-w-48 w-48 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-			<a href="#">
-				<img className="p-8 rounded-t-lg" src={item.image} alt={item.name} />
-			</a>
+		<div className="md:max-w-48 w-48 bg-white rounded-lg shadow-md flex flex-col justify-center dark:bg-gray-800 dark:border-gray-700">
+			<img
+				className="p-8 rounded-t-lg h-56 "
+				src={item.image}
+				alt={item.name}
+			/>
 			<div className="px-5 pb-5">
 				<a>
 					<h5 className="text-lg text-center font-normal tracking-tight text-gray-900 dark:text-white">
@@ -28,7 +30,7 @@ const ProductCard = ({ item }) => {
 				</a>
 
 				<div className="flex flex-col justify-between items-center mt-3">
-					<div className="text-2xl mb-2 font-semibold text-gray-800 dark:text-white">
+					<div className="text-2xl h-14 mb-2 font-semibold text-gray-800 dark:text-white">
 						<span className="grid text-sm font-lighter text-gray-800 text-center dark:text-white">
 							<PriceTagGenerator category="regular" />
 							<PriceTagGenerator category="VIP" />
