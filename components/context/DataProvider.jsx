@@ -37,6 +37,13 @@ const DataProvider = ({ children }) => {
 	}, [orderedItem]);
 	// CURRENT BUYER
 
+	// toaster setup
+	const setupToast = (toastMessage, eventType) => {
+		if (toastMessage === "") setShowToast("");
+		setShowToast({ toastMessage, eventType });
+	};
+
+	// Fired in ProductItem's button
 	const addItemToCart = (orderedItem, item, buyerType) => {
 		// get price for certain type of buyer
 		let priceInTotal = item.prices.filter(
@@ -48,8 +55,21 @@ const DataProvider = ({ children }) => {
 			priceInTotal = item.prices.filter((item) => item.priceFor === "regular");
 		}
 
-		// make new object to add quantity and price for item
-		const newItem = { ...item, qty: 1, priceInTotal: priceInTotal[0].price };
+		// if price not found then item not added and showing error message
+		if (priceInTotal.length < 1) {
+			setupToast("Customer Type Does Not Match With Item", "danger");
+		}
+
+		// if conditions on buyer's type fulfilled then add item to cart
+		const newItem = {
+			...item,
+			qty: 1,
+			initialPrice: priceInTotal[0].price,
+			priceInTotal: {
+				price: priceInTotal[0].price,
+				priceFor: priceInTotal[0].priceFor,
+			},
+		};
 		let duplicateOrdered = [...orderedItem];
 
 		if (duplicateOrdered.length < 1) {
@@ -71,18 +91,13 @@ const DataProvider = ({ children }) => {
 				setOrderedItem([...newOrderedItem]);
 			} else setOrderedItem([...newOrderedItem, newItem]);
 		}
-	};
 
-	const setupToast = (toastMessage, eventType) => {
-		if (toastMessage === "") setShowToast("");
-		setShowToast({ toastMessage, eventType });
+		// make new object to add quantity and price for item
 	};
 
 	const countTotalPrice = (orderedItem) => {
 		// formula for counting price
-		const itemPrices = orderedItem.map(
-			(item) => item.prices[0].price * item.qty
-		);
+		const itemPrices = orderedItem.map((item) => item.initialPrice * item.qty);
 		if (orderedItem.length > 0) {
 			setTotalPrice(itemPrices.reduce((a, b) => a + b, 0));
 		}
@@ -93,12 +108,11 @@ const DataProvider = ({ children }) => {
 			if (currentItem.name === selectedItem.name) {
 				if (action === "subtract") {
 					currentItem.qty--;
-					currentItem.priceInTotal =
-						currentItem.prices[0].price * currentItem.qty;
+					currentItem.priceInTotal.price =
+						currentItem.initialPrice * currentItem.qty;
 				} else if (action === "add") {
 					currentItem.qty++;
-					currentItem.priceInTotal =
-						currentItem.prices[0].price * currentItem.qty;
+					currentItem.initialPrice * currentItem.qty;
 				}
 				if (currentItem.qty > 0) return currentItem;
 			} else return currentItem;

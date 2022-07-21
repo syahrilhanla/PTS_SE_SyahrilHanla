@@ -14,11 +14,11 @@ const OrderedItemCard = ({ item, countItemPrice }) => {
 						{item.name}
 					</p>
 					<p className="text-sm text-gray-500 truncate dark:text-gray-400">
-						Regular Price
+						{item.priceInTotal.priceFor} Price
 					</p>
 				</div>
 				<div className="flex flex-col items-center text-base font-semibold text-gray-900 dark:text-white">
-					Rp. {item.priceInTotal}
+					Rp. {item.priceInTotal.price}
 					<div className="w-full flex justify-evenly gap-1">
 						<button
 							className="py-0.5 px-2 bg-slate-100 shadow-md

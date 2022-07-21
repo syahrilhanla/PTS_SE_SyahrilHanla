@@ -6,7 +6,7 @@ const ToastComponent = ({ showToast, setupToast }) => {
 	}, 3500);
 
 	return (
-		<div className={`absolute top-5 left-[40%]`}>
+		<div className={`fixed top-5 left-[40%]`}>
 			<div
 				class="flex items-center p-4 mb-4 w-full max-w-xs text-gray-500
          bg-red-100 rounded-lg shadow 
