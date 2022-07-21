@@ -8,9 +8,15 @@ const ProductCard = ({ item }) => {
 	const PriceTagGenerator = ({ category }) => {
 		if (item.prices.filter((price) => price.priceFor === category).length > 0) {
 			return (
-				<p>
-					{category} - Rp.{" "}
-					{item.prices.filter((price) => price.priceFor === category)[0].price}
+				<p className="flex justify-between w-full">
+					<span>{category}</span>
+					<span>
+						Rp.{" "}
+						{
+							item.prices.filter((price) => price.priceFor === category)[0]
+								.price
+						}
+					</span>
 				</p>
 			);
 		}
@@ -31,8 +37,8 @@ const ProductCard = ({ item }) => {
 				</a>
 
 				<div className="flex flex-col justify-between items-center mt-3">
-					<div className="text-2xl h-14 mb-2 font-semibold text-gray-800 dark:text-white">
-						<span className="grid text-sm font-lighter text-gray-800 text-center dark:text-white">
+					<div className="text-2xl w-full h-14 mb-3">
+						<span className="w-full grid text-sm font-lighter text-gray-800 text-center dark:text-white">
 							<PriceTagGenerator category="regular" />
 							<PriceTagGenerator category="VIP" />
 							<PriceTagGenerator category="wholesale" />
