@@ -1,6 +1,10 @@
 import { GoStop } from "react-icons/go";
 
 const ToastComponent = ({ showToast, setupToast }) => {
+	setTimeout(() => {
+		setupToast("");
+	}, 3500);
+
 	return (
 		<div className={`absolute top-5 left-[40%]`}>
 			<div
@@ -13,13 +17,10 @@ const ToastComponent = ({ showToast, setupToast }) => {
 					<GoStop />
 				</div>
 				<div class="ml-3 text-sm font-normal">{showToast.toastMessage}</div>
-				<button
-					className="px-2 ml-4 py-0 text-red-400 font-semiblock text-2xl rounded-md hover:bg-red-200"
-					onClick={() => setupToast("")}
-				>
+				{/* <button className="px-2 ml-4 py-0 text-red-400 font-semiblock text-2xl rounded-md hover:bg-red-200">
 					{" "}
 					X{" "}
-				</button>
+				</button> */}
 			</div>
 		</div>
 	);
