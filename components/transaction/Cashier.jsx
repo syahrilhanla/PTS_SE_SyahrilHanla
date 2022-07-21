@@ -7,8 +7,14 @@ import OrderedItemCard from "./OrderedItemCard";
 import PurchaseInfo from "./PurchaseInfo";
 
 const Cashier = () => {
-	const { currentBuyer, setCurrentBuyer, buyerList, orderedItem } =
-		useContext(GlobalContext);
+	const {
+		currentBuyer,
+		setCurrentBuyer,
+		buyerList,
+		orderedItem,
+		totalPrice,
+		countItemPrice,
+	} = useContext(GlobalContext);
 
 	return (
 		<div className="mx-3 h-fit md:mx-4 py-4 px-4 my-3 overflow-auto max-w-md bg-white rounded-lg border shadow-md sm:pt-8 sm:px-5 dark:bg-gray-800 dark:border-gray-700">
@@ -39,14 +45,18 @@ const Cashier = () => {
 					className="max-h-[60vh] px-3 md:px-0  overflow-y-auto divide-y space-y-2
            divide-gray-200 dark:divide-gray-700 mb-2"
 				>
-					{orderedItem &&
+					{orderedItem.length > 0 &&
 						orderedItem.map((item) => (
-							<OrderedItemCard item={item} key={item.name} />
+							<OrderedItemCard
+								item={item}
+								key={item.name}
+								countItemPrice={countItemPrice}
+							/>
 						))}
 				</ul>
 			</div>
 
-			<PurchaseInfo />
+			<PurchaseInfo totalPrice={totalPrice} itemAmount={orderedItem.length} />
 
 			<div className="w-full">
 				<button

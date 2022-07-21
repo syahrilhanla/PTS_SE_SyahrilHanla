@@ -30,12 +30,13 @@ const DataProvider = ({ children }) => {
 	const [totalPrice, setTotalPrice] = useState("");
 
 	useEffect(() => {
-		processPrice(orderedItem);
+		countTotalPrice(orderedItem);
+		console.log(orderedItem);
 	}, [orderedItem]);
 	// CURRENT BUYER
 
 	const addItemToCart = (orderedItem, item) => {
-		const newItem = { ...item, qty: 1 };
+		const newItem = { ...item, qty: 1, priceInTotal: item.prices[0].price };
 		let duplicateOrdered = [...orderedItem];
 
 		if (duplicateOrdered.length < 1) {
@@ -58,14 +59,38 @@ const DataProvider = ({ children }) => {
 		}
 	};
 
-	const processPrice = (orderedItem) => {
+	const countTotalPrice = (orderedItem) => {
 		// formula for counting price
 		const itemPrices = orderedItem.map(
 			(item) => item.prices[0].price * item.qty
 		);
 		if (orderedItem.length > 0) {
-			console.log(itemPrices.reduce((a, b) => a + b, 0));
+			setTotalPrice(itemPrices.reduce((a, b) => a + b, 0));
 		}
+	};
+
+	const countItemPrice = (selectedItem, action) => {
+		const modifiedItem = orderedItem.map((currentItem) => {
+			if (currentItem.name === selectedItem.name) {
+				if (currentItem.qty >= 1) {
+					if (action === "subtract") {
+						currentItem.qty--;
+						currentItem.priceInTotal =
+							currentItem.prices[0].price * currentItem.qty;
+					} else if (action === "add") {
+						currentItem.qty++;
+						currentItem.priceInTotal =
+							currentItem.prices[0].price * currentItem.qty;
+					}
+					return currentItem;
+				} else {
+					return;
+					// return nothing or delete it
+				}
+			} else return currentItem;
+		});
+
+		setOrderedItem(modifiedItem);
 	};
 
 	const dataSetter = () => {
@@ -90,6 +115,8 @@ const DataProvider = ({ children }) => {
 				setCurrentBuyer,
 				addItemToCart,
 				orderedItem,
+				totalPrice,
+				countItemPrice,
 			}}
 		>
 			{children}
