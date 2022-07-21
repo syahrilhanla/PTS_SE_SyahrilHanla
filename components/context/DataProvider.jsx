@@ -25,11 +25,12 @@ const DataProvider = ({ children }) => {
 	});
 	// CURRENT BUYER
 
-	// CART ITEMS
+	// CART PROCESSING
 	const [orderedItem, setOrderedItem] = useState([]);
+	const [totalPrice, setTotalPrice] = useState("");
 
 	useEffect(() => {
-		console.log(orderedItem);
+		processPrice(orderedItem);
 	}, [orderedItem]);
 	// CURRENT BUYER
 
@@ -54,6 +55,16 @@ const DataProvider = ({ children }) => {
 			if (isSame) {
 				setOrderedItem([...newOrderedItem]);
 			} else setOrderedItem([...newOrderedItem, newItem]);
+		}
+	};
+
+	const processPrice = (orderedItem) => {
+		// formula for counting price
+		const itemPrices = orderedItem.map(
+			(item) => item.prices[0].price * item.qty
+		);
+		if (orderedItem.length > 0) {
+			console.log(itemPrices.reduce((a, b) => a + b, 0));
 		}
 	};
 
