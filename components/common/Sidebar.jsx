@@ -4,17 +4,11 @@ import Link from "next/link";
 import { HiOutlineDocumentReport } from "react-icons/hi";
 import { AiOutlineUsergroupAdd, AiOutlineShop } from "react-icons/ai";
 import { GiIsland } from "react-icons/gi";
-import { MdPointOfSale } from "react-icons/md";
 
 const Sidebar = () => {
 	const router = useRouter();
 
 	const navButtons = [
-		{
-			link: "/pos",
-			text: "Point of Sales",
-			icon: () => <MdPointOfSale />,
-		},
 		{
 			link: "/",
 			text: "Shop",
