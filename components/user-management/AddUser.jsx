@@ -22,7 +22,7 @@ const CustomerTypeDropdown = ({ setType, type }) => {
 			>
 				<ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
 					{types.map((type) => (
-						<li>
+						<li key={type}>
 							<div
 								className="block py-2 px-4 hover:bg-gray-200 dark:hover:bg-gray-600
 						 dark:hover:text-white"

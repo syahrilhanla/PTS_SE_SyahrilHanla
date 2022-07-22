@@ -2,7 +2,7 @@ import { fetchTransaction } from "./dataFetchers";
 import { postSummary } from "./dataPosters";
 import { getBestSellingItem } from "./getBestSellings";
 
-const useProcessSummary = async () => {
+const processSummary = async () => {
 	const response = await fetchTransaction();
 	const transactionData = response.filter(
 		(data) => Array.isArray(data) === true
@@ -65,4 +65,4 @@ const useProcessSummary = async () => {
 	return { transactionData, summaryObject };
 };
 
-export default useProcessSummary;
+export default processSummary;

@@ -5,22 +5,20 @@ import { GlobalContext } from "../context/DataProvider";
 const SummaryModal = () => {
 	const { setShowSummary, summaryData } = useContext(GlobalContext);
 
-	console.log(summaryData);
-
 	const router = useRouter();
 
 	const CloseButton = () => {
 		return (
 			<button
 				type="button"
-				class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+				className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
 				onClick={() => {
 					setShowSummary(false);
 				}}
 			>
 				<svg
 					aria-hidden="true"
-					class="w-5 h-5"
+					className="w-5 h-5"
 					fill="currentColor"
 					viewBox="0 0 20 20"
 					xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +29,7 @@ const SummaryModal = () => {
 						clip-rule="evenodd"
 					></path>
 				</svg>
-				<span class="sr-only">Close modal</span>
+				<span className="sr-only">Close modal</span>
 			</button>
 		);
 	};
@@ -40,19 +38,19 @@ const SummaryModal = () => {
 		<>
 			<div
 				tabindex="-1"
-				class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center flex"
+				className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center flex"
 				role="dialog"
 			>
-				<div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
-					<div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-						<div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
-							<h3 class="text-2xl font-semibold text-gray-900 dark:text-white">
+				<div className="relative p-4 w-full max-w-2xl h-full md:h-auto">
+					<div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+						<div className="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
+							<h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
 								Sales Summary of Today
 							</h3>
 							<CloseButton />
 						</div>
 
-						<div class="p-6 space-y-6 text-base leading-relaxed text-gray-700 dark:text-gray-400">
+						<div className="p-6 space-y-6 text-base leading-relaxed text-gray-700 dark:text-gray-400">
 							<p className="grid grid-cols-[7fr_3fr]">
 								Total Number of Transactions:{" "}
 								<span className="flex justify-center text-lg font-medium">
@@ -82,7 +80,10 @@ const SummaryModal = () => {
 								<span className="flex justify-center text-lg font-medium">
 									<ul className="w-full">
 										{summaryData.revenuePerCategory.map((category) => (
-											<li className="flex justify-around">
+											<li
+												className="flex justify-around"
+												key={category.categoryName}
+											>
 												<span>{category.categoryName}: </span>
 												<span>Rp. {category.revenue}</span>
 											</li>

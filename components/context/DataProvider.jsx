@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { fetchBuyers, fetchItem, fetchSummary } from "../utils/dataFetchers";
 import { postSummary, postTransaction } from "../utils/dataPosters";
 import { checkForDuplicate } from "../utils/checkForDuplicate";
-import useProcessSummary from "../utils/useProcessSummary";
+import processSummary from "../utils/processSummary";
 
 export const GlobalContext = createContext();
 
@@ -161,7 +161,7 @@ const DataProvider = ({ children }) => {
 				// post transaction data, then process summary
 				await postTransaction(submittedDetails.details);
 
-				const { summaryObject } = await useProcessSummary();
+				const { summaryObject } = await processSummary();
 				setSummaryData(summaryObject);
 
 				setShowSummary(true);
