@@ -136,27 +136,76 @@
         "totalPrice": 225000,
         "type": "tops"
       }
+    ],
+    [
+      {
+        "itemName": "Blue Hat",
+        "buyer": "Dipta",
+        "qty": 5,
+        "totalPrice": 100000,
+        "type": "hats"
+      }
+    ],
+    [
+      {
+        "itemName": "Mens Top",
+        "buyer": "Ani",
+        "qty": 3,
+        "totalPrice": 90000,
+        "type": "tops"
+      }
+    ],
+    [
+      {
+        "itemName": "Mens Shorts",
+        "buyer": "Ani",
+        "qty": 1,
+        "totalPrice": 50000,
+        "type": "shorts"
+      }
     ]
   ],
   "Summary": {
-    "totalTransaction": 4,
-    "totalRevenue": 360000,
+    "totalTransaction": 7,
+    "totalRevenue": 600000,
     "bestSellingCategory": {
       "categoryName": "tops",
-      "revenue": 305000
+      "revenue": 395000
     },
     "bestSellingItem": {
       "itemName": "Mens Top",
-      "revenue": 305000
+      "revenue": 395000
     },
     "revenuePerCategory": [
       {
         "categoryName": "hats",
-        "revenue": 55000
+        "revenue": 155000
       },
       {
         "categoryName": "tops",
-        "revenue": 305000
+        "revenue": 395000
+      },
+      {
+        "categoryName": "shorts",
+        "revenue": 50000
+      }
+    ],
+    "topSpenders": [
+      {
+        "buyer": "Charlie",
+        "totalSpending": 20000
+      },
+      {
+        "buyer": "Budi",
+        "totalSpending": 95000
+      },
+      {
+        "buyer": "Ani",
+        "totalSpending": 160000
+      },
+      {
+        "buyer": "Dipta",
+        "totalSpending": 325000
       }
     ]
   }

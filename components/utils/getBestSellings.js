@@ -76,7 +76,40 @@ const getBestSellingItem = (transactionData) => {
 		}
 	}
 
-	return { bestSellingItem, bestSellingCategory, revenuePerCategory };
+	// get top spenders
+	const spenders = transactionData.flat(2).map((item) => item.buyer);
+	const spenderObject = {};
+
+	// variable to store revenue per category
+	let topSpenders = [];
+
+	// inserting items to each category object
+	for (const key of spenders) {
+		if (!Object.hasOwn(spenderObject, spenders)) {
+			spenderObject[key] = transactionData
+				.flat(2)
+				.filter((item) => item.buyer === key);
+		}
+	}
+
+	for (const key in spenderObject) {
+		const userSpending = spenderObject[key]
+			.flat()
+			.map((item) => item.totalPrice)
+			.reduce((a, b) => a + b, 0);
+
+		topSpenders.push({
+			buyer: key,
+			totalSpending: userSpending,
+		});
+	}
+
+	return {
+		bestSellingItem,
+		bestSellingCategory,
+		revenuePerCategory,
+		topSpenders,
+	};
 };
 
 export { getBestSellingItem };
