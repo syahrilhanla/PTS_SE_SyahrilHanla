@@ -14,6 +14,7 @@ const CustomerDropdown = ({ buyers, setCurrentBuyer }) => {
         dark:focus:ring-blue-800 flex flex-row justify-center items-center gap-2"
 				type="button"
 				onClick={() => setOpen((prevState) => !prevState)}
+				onBlur={() => setOpen(false)}
 			>
 				Select Buyer <AiFillCaretDown />
 			</button>

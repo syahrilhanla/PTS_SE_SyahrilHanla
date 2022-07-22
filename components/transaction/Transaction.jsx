@@ -1,29 +1,35 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { GlobalContext } from "../context/DataProvider";
 import Categories from "../common/Categories";
 import Heading from "../common/Heading";
 import Cashier from "./Cashier";
 import ProductCatalogue from "./ProductCatalogue";
+import SummaryModal from "./SummaryModal";
 
 const Transaction = () => {
+	const { showSummary } = useContext(GlobalContext);
 	const [category, setCategory] = useState("All Item");
 
 	return (
-		<div className="grid lg:grid-cols-[7fr_4fr] w-full">
-			<div
-				className="lg:my-3 h-min lg:mx-1 py-5 lg:py-0 sm:px-5
+		<>
+			{showSummary && <SummaryModal />}
+			<div className="grid lg:grid-cols-[7fr_4fr] w-full">
+				<div
+					className="lg:my-3 h-min lg:mx-1 py-5 lg:py-0 sm:px-5
 			 bg-white rounded-lg border shadow-md
 			  dark:bg-gray-800 dark:border-gray-700 w-full"
-			>
-				<div>
-					<Heading text={"Catalogue"} />
-					<Categories setCategory={setCategory} />
+				>
+					<div>
+						<Heading text={"Catalogue"} />
+						<Categories setCategory={setCategory} />
+					</div>
+					<ProductCatalogue category={category} />
 				</div>
-				<ProductCatalogue category={category} />
+				<span className="w-full lg:block grid justify-center">
+					<Cashier />
+				</span>
 			</div>
-			<span className="w-full lg:block grid justify-center">
-				<Cashier />
-			</span>
-		</div>
+		</>
 	);
 };
 
