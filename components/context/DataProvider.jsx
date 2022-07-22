@@ -10,8 +10,6 @@ const DataProvider = ({ children }) => {
 	// INITIAL ITEM DATA
 	const [buyerList, setBuyerList] = useState([]);
 	const [itemList, setItemList] = useState([]);
-	const [transactions, setTransactions] = useState([]);
-	const [summary, setSummary] = useState({});
 	// INITIAL ITEM DATA
 
 	// CURRENT BUYER
@@ -164,6 +162,7 @@ const DataProvider = ({ children }) => {
 				// await postTransaction(submittedDetails.details);
 
 				const { summaryObject } = await useProcessSummary();
+				setSummaryData(summaryObject);
 				await postSummary(summaryObject);
 
 				setShowSummary(true);
@@ -198,8 +197,6 @@ const DataProvider = ({ children }) => {
 			value={{
 				buyerList,
 				itemList,
-				transactions,
-				summary,
 				currentBuyer,
 				setCurrentBuyer,
 				addItemToCart,
@@ -212,6 +209,8 @@ const DataProvider = ({ children }) => {
 				duplicateItem,
 				showSummary,
 				setShowSummary,
+				summaryData,
+				setSummaryData,
 			}}
 		>
 			{children}

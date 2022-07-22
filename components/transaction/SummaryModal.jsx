@@ -3,7 +3,10 @@ import { useContext } from "react";
 import { GlobalContext } from "../context/DataProvider";
 
 const SummaryModal = () => {
-	const { setShowSummary } = useContext(GlobalContext);
+	const { setShowSummary, summaryData } = useContext(GlobalContext);
+
+	console.log(summaryData);
+
 	const router = useRouter();
 
 	const CloseButton = () => {
@@ -43,18 +46,60 @@ const SummaryModal = () => {
 				<div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
 					<div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
 						<div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
-							<h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-								Summary of Sales
+							<h3 class="text-2xl font-semibold text-gray-900 dark:text-white">
+								Sales Summary of Today
 							</h3>
 							<CloseButton />
 						</div>
-						<div class="p-6 space-y-6">
-							<p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-								With less than a month to go before the European Union enacts
-								new consumer privacy laws for its citizens, companies around the
-								world are updating their terms of service agreements to comply.
+
+						<div class="p-6 space-y-6 text-base leading-relaxed text-gray-700 dark:text-gray-400">
+							<p className="grid grid-cols-[7fr_3fr]">
+								Total Number of Transactions:{" "}
+								<span className="flex justify-center text-lg font-medium">
+									{summaryData.totalTransaction}
+								</span>
+							</p>
+							<p className="grid grid-cols-[7fr_3fr]">
+								Revenue of The Day:{" "}
+								<span className="flex justify-center text-lg font-medium">
+									Rp. {summaryData.totalRevenue}
+								</span>
+							</p>
+							<p className="grid grid-cols-[7fr_3fr]">
+								Best Selling Item:{" "}
+								<span className="flex justify-center text-lg font-medium">
+									{summaryData.bestSellingItem.itemName}
+								</span>
+							</p>
+							<p className="grid grid-cols-[7fr_3fr]">
+								Best Selling Category:{" "}
+								<span className="flex justify-center text-lg font-medium">
+									{summaryData.bestSellingCategory.categoryName}
+								</span>
+							</p>
+							<p className="grid grid-cols-[7fr_3fr]">
+								Revenue Per Category:{" "}
+								<span className="flex justify-center text-lg font-medium">
+									<ul className="w-full">
+										{summaryData.revenuePerCategory.map((category) => (
+											<li className="flex justify-around">
+												<span>{category.categoryName}: </span>
+												<span>Rp. {category.revenue}</span>
+											</li>
+										))}
+									</ul>
+								</span>
+							</p>
+							<p className="grid grid-cols-[7fr_3fr]">
+								Top Spenders (in order):{" "}
+								<span className="flex justify-center text-lg font-medium">
+									{summaryData.topThreeSpenders
+										.map((buyer) => buyer.buyer)
+										.join(", ")}
+								</span>
 							</p>
 						</div>
+
 						<div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
 							<button
 								data-modal-toggle="defaultModal"
