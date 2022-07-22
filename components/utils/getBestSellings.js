@@ -80,10 +80,10 @@ const getBestSellingItem = (transactionData) => {
 	const spenders = transactionData.flat(2).map((item) => item.buyer);
 	const spenderObject = {};
 
-	// variable to store revenue per category
-	let topSpenders = [];
+	// variable to store revenue per buyer
+	let allSpender = [];
 
-	// inserting items to each category object
+	// inserting items to each spender object
 	for (const key of spenders) {
 		if (!Object.hasOwn(spenderObject, spenders)) {
 			spenderObject[key] = transactionData
@@ -98,17 +98,23 @@ const getBestSellingItem = (transactionData) => {
 			.map((item) => item.totalPrice)
 			.reduce((a, b) => a + b, 0);
 
-		topSpenders.push({
+		allSpender.push({
 			buyer: key,
 			totalSpending: userSpending,
 		});
 	}
 
+	// sort buyer descending to get top three buyers
+	const topThreeSpenders = allSpender
+		.sort((a, b) => b.totalSpending - a.totalSpending)
+		.map((buyer) => buyer)
+		.splice(0, 3);
+
 	return {
 		bestSellingItem,
 		bestSellingCategory,
 		revenuePerCategory,
-		topSpenders,
+		topThreeSpenders,
 	};
 };
 

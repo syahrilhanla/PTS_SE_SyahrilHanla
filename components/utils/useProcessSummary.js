@@ -11,7 +11,7 @@ const useProcessSummary = async () => {
 		bestSellingItem,
 		bestSellingCategory,
 		revenuePerCategory,
-		topSpenders,
+		topThreeSpenders,
 	} = getBestSellingItem(transactionData);
 
 	const totalTransaction = transactionData.length;
@@ -25,7 +25,7 @@ const useProcessSummary = async () => {
 		bestSellingCategory,
 		bestSellingItem,
 		revenuePerCategory,
-		topSpenders,
+		topThreeSpenders,
 	};
 
 	return { transactionData, summaryObject };

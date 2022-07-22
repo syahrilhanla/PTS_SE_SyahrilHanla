@@ -190,22 +190,18 @@
         "revenue": 50000
       }
     ],
-    "topSpenders": [
+    "topThreeSpenders": [
       {
-        "buyer": "Charlie",
-        "totalSpending": 20000
-      },
-      {
-        "buyer": "Budi",
-        "totalSpending": 95000
+        "buyer": "Dipta",
+        "totalSpending": 325000
       },
       {
         "buyer": "Ani",
         "totalSpending": 160000
       },
       {
-        "buyer": "Dipta",
-        "totalSpending": 325000
+        "buyer": "Budi",
+        "totalSpending": 95000
       }
     ]
   }

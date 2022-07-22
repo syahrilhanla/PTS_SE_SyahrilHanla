@@ -161,7 +161,7 @@ const DataProvider = ({ children }) => {
 		} else {
 			try {
 				// post transaction data, then process summary
-				await postTransaction(submittedDetails.details);
+				// await postTransaction(submittedDetails.details);
 
 				const { summaryObject } = await useProcessSummary();
 				await postSummary(summaryObject);
