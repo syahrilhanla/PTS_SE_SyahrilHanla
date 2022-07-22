@@ -1,4 +1,5 @@
 import { fetchTransaction } from "./dataFetchers";
+import { postSummary } from "./dataPosters";
 import { getBestSellingItem } from "./getBestSellings";
 
 const useProcessSummary = async () => {
@@ -59,6 +60,7 @@ const useProcessSummary = async () => {
 		topThreeSpenders,
 		weeklyData,
 	};
+	await postSummary(summaryObject);
 
 	return { transactionData, summaryObject };
 };

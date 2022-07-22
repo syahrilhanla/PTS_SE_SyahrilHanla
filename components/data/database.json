@@ -97,111 +97,34 @@
     [
       {
         "itemName": "Black Hat",
-        "buyer": "Charlie",
-        "qty": 1,
-        "totalPrice": 20000,
-        "type": "hats"
-      }
-    ],
-    [
-      {
-        "itemName": "Blue Hat",
-        "buyer": "Budi",
-        "qty": 1,
-        "totalPrice": 15000,
-        "type": "hats"
-      },
-      {
-        "itemName": "Mens Top",
-        "buyer": "Budi",
-        "qty": 4,
-        "totalPrice": 80000,
-        "type": "tops"
-      }
-    ],
-    [
-      {
-        "itemName": "Black Hat",
         "buyer": "Ani",
         "qty": 1,
         "totalPrice": 20000,
         "type": "hats"
-      }
-    ],
-    [
-      {
-        "itemName": "Mens Top",
-        "buyer": "Dipta",
-        "qty": 15,
-        "totalPrice": 225000,
-        "type": "tops"
-      }
-    ],
-    [
-      {
-        "itemName": "Blue Hat",
-        "buyer": "Dipta",
-        "qty": 5,
-        "totalPrice": 100000,
-        "type": "hats"
-      }
-    ],
-    [
-      {
-        "itemName": "Mens Top",
-        "buyer": "Ani",
-        "qty": 3,
-        "totalPrice": 90000,
-        "type": "tops"
-      }
-    ],
-    [
-      {
-        "itemName": "Mens Shorts",
-        "buyer": "Ani",
-        "qty": 1,
-        "totalPrice": 50000,
-        "type": "shorts"
       }
     ]
   ],
   "Summary": {
-    "totalTransaction": 7,
-    "totalRevenue": 600000,
+    "totalTransaction": 1,
+    "totalRevenue": 20000,
     "bestSellingCategory": {
-      "categoryName": "tops",
-      "revenue": 395000
+      "categoryName": "hats",
+      "revenue": 20000
     },
     "bestSellingItem": {
-      "itemName": "Mens Top",
-      "revenue": 395000
+      "itemName": "Black Hat",
+      "revenue": 20000
     },
     "revenuePerCategory": [
       {
         "categoryName": "hats",
-        "revenue": 155000
-      },
-      {
-        "categoryName": "tops",
-        "revenue": 395000
-      },
-      {
-        "categoryName": "shorts",
-        "revenue": 50000
+        "revenue": 20000
       }
     ],
     "topThreeSpenders": [
       {
-        "buyer": "Dipta",
-        "totalSpending": 325000
-      },
-      {
         "buyer": "Ani",
-        "totalSpending": 160000
-      },
-      {
-        "buyer": "Budi",
-        "totalSpending": 95000
+        "totalSpending": 20000
       }
     ],
     "weeklyData": [
@@ -231,7 +154,7 @@
       },
       {
         "name": "Today",
-        "revenue": 600000
+        "revenue": 20000
       }
     ]
   }
