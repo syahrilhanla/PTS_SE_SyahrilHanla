@@ -30,6 +30,24 @@ const CategoryList = ({ data }) => {
 	);
 };
 
+const TotalRevenueList = ({ totalRevenue, totalTransaction }) => {
+	return (
+		<li className="py-3 sm:py-4">
+			<div className="flex items-center space-x-4">
+				<div className="flex-1 min-w-0">
+					<p className="text-xl font-normal text-gray-900 truncate dark:text-white">
+						Total Transactions: {totalTransaction}
+					</p>
+				</div>
+
+				<div className="inline-flex items-center text-xl font-semibold text-gray-900 dark:text-white">
+					Rp. {totalRevenue}
+				</div>
+			</div>
+		</li>
+	);
+};
+
 const CategoryRevCard = ({ revenueOfDay, summaryData }) => {
 	return (
 		<div className="w-full flex justify-center">
@@ -51,6 +69,14 @@ const CategoryRevCard = ({ revenueOfDay, summaryData }) => {
 						{summaryData.revenuePerCategory.map((data) => (
 							<CategoryList key={data.categoryName} data={data} />
 						))}
+						{revenueOfDay && (
+							<TotalRevenueList
+								key={summaryData.totalRevenue}
+								revenueOfDay={true}
+								totalRevenue={summaryData.totalRevenue}
+								totalTransaction={summaryData.totalTransaction}
+							/>
+						)}
 					</ul>
 				</div>
 			</div>
