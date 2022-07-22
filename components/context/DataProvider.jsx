@@ -24,6 +24,7 @@ const DataProvider = ({ children }) => {
 	const [orderedItem, setOrderedItem] = useState([]);
 	const [totalPrice, setTotalPrice] = useState(null);
 	const [duplicateItem, setDuplicateItem] = useState([]);
+	const [showSummary, setShowSummary] = useState(false);
 	const [showToast, setShowToast] = useState({
 		toastMessage:
 			"Due to stock shortage customer now can only buy 1 (one) kind of item in a transaction per day. We are really sorry for the inconvenience. As compensation, please kindly take our offering of Free Shipment. Sincerely yours, The Island Shop.",
@@ -131,7 +132,8 @@ const DataProvider = ({ children }) => {
 				itemName: item.name,
 				buyer: item.buyerName,
 				qty: item.qty,
-				totalPrice: item.priceInTotal.price,
+				totalPrice: item.initialPrice * item.qty,
+				type: item.type,
 			};
 		});
 
@@ -151,7 +153,16 @@ const DataProvider = ({ children }) => {
 				"danger"
 			);
 		} else {
-			await postTransaction(submittedDetails.details);
+			try {
+				// post transaction data and summary first
+
+				// await postSummary();
+				await postTransaction(submittedDetails.details);
+
+				setShowSummary(true);
+			} catch (error) {
+				setupToast("Failed to connect to the Database, try again.", "danger");
+			}
 		}
 	};
 
@@ -191,6 +202,8 @@ const DataProvider = ({ children }) => {
 				showToast,
 				handleTransaction,
 				duplicateItem,
+				showSummary,
+				setShowSummary,
 			}}
 		>
 			{children}

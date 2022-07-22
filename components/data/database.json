@@ -96,24 +96,11 @@
 		},
 		[
 			{
-				"itemName": "Mens Top",
+				"itemName": "Black Hat",
 				"buyer": "Ani",
-				"qty": 2,
-				"totalPrice": 60000
-			}
-		],
-		[
-			{
-				"itemName": "Blue Hat",
-				"buyer": "Budi",
 				"qty": 1,
-				"totalPrice": 15000
-			},
-			{
-				"itemName": "Mens Top",
-				"buyer": "Budi",
-				"qty": 1,
-				"totalPrice": 30000
+				"totalPrice": 20000,
+				"type": "hats"
 			}
 		]
 	],
