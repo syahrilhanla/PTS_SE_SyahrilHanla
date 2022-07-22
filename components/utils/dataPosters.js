@@ -14,7 +14,6 @@ const postTransaction = async (submittedData) => {
 
 const postSummary = async (summaryData) => {
 	try {
-		console.log({ summaryData });
 		fetch("http://localhost:8000/Summary", {
 			method: "PUT",
 			headers: {
@@ -27,4 +26,18 @@ const postSummary = async (summaryData) => {
 	}
 };
 
-export { postTransaction, postSummary };
+const postUser = async (buyerData) => {
+	try {
+		fetch("http://localhost:8000/Buyers", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(buyerData),
+		});
+	} catch (error) {
+		console.log(error.message);
+	}
+};
+
+export { postTransaction, postSummary, postUser };

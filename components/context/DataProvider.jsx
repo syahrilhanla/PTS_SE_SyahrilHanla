@@ -196,6 +196,7 @@ const DataProvider = ({ children }) => {
 		<GlobalContext.Provider
 			value={{
 				buyerList,
+				setBuyerList,
 				itemList,
 				currentBuyer,
 				setCurrentBuyer,

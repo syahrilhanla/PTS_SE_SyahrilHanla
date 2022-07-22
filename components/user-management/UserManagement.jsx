@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { GlobalContext } from "../context/DataProvider";
+
 import ButtonGroup from "../common/ButtonGroup";
 import Heading from "../common/Heading";
 import AddUser from "./AddUser";
@@ -6,6 +8,8 @@ import SearchBar from "./SearchBar";
 import UserTable from "./UserTable";
 
 const UserManagement = () => {
+	const { buyerList, summaryData } = useContext(GlobalContext);
+
 	const [option, setOption] = useState(1);
 
 	const handleOption = (index) => {
@@ -33,9 +37,10 @@ const UserManagement = () => {
 			</div>
 
 			<div className="w-full px-2 flex justify-center sm:mt-0 mt-4">
-				{option == 1 && <UserTable />}
-				{option == 2 && <AddUser />}
-				{option == 3 && <UserTable />}
+				{option == 1 && (
+					<UserTable buyerList={buyerList} summaryData={summaryData} />
+				)}
+				{option == 2 && <AddUser buyerList={buyerList} />}
 			</div>
 		</div>
 	);
