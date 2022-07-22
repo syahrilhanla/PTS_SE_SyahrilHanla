@@ -15,7 +15,7 @@ const DataProvider = ({ children }) => {
 	// CURRENT BUYER
 	const [currentBuyer, setCurrentBuyer] = useState({
 		name: "Select Buyer",
-		type: "regular",
+		type: "Buyer Type",
 	});
 	// CURRENT BUYER
 
