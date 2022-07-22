@@ -6,9 +6,11 @@ import BestItemCard from "./BestItemCard";
 const BestSelling = () => {
 	const { summaryData, itemList } = useContext(GlobalContext);
 
-	const bestItem = itemList.filter(
-		(item) => item.name === summaryData.bestSellingItem.itemName
-	)[0];
+	const bestItem =
+		summaryData &&
+		itemList.filter(
+			(item) => item.name === summaryData.bestSellingItem.itemName
+		)[0];
 
 	return (
 		<div className="mt-6">

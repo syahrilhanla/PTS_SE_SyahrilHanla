@@ -24,7 +24,7 @@ const RevenueCaps = () => {
 						Daily Revenues Graphs
 					</h3>
 					<hr className="mb-3" />
-					<GraphsComponent />
+					<GraphsComponent weeklyData={summaryData.weeklyData} />
 				</>
 			)}
 		</div>
