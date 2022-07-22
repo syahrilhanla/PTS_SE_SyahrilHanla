@@ -1,5 +1,5 @@
 const getBestSellingItem = (transactionData) => {
-	// get best item based on how many item bought
+	// get best item based on revenue per item
 	const itemNames = transactionData.flat(2).map((item) => item.itemName);
 	const itemNamesObject = {};
 	let bestSellingItem = { itemName: "", amount: 0 };
@@ -7,19 +7,27 @@ const getBestSellingItem = (transactionData) => {
 	// inserting item to new object
 	for (const key of itemNames) {
 		if (!Object.hasOwn(itemNamesObject, itemNames)) {
-			itemNamesObject[key] = itemNames.filter((item) => item === key).length;
+			itemNamesObject[key] = transactionData
+				.flat(2)
+				.filter((item) => item.itemName === key);
 		}
 	}
 
 	// looking for the most up selling
 	for (const key in itemNamesObject) {
+		const itemRevenue = itemNamesObject[key]
+			.flat()
+			.map((item) => item.totalPrice)
+			.reduce((a, b) => a + b, 0);
 		if (bestSellingItem.itemName === "") {
-			bestSellingItem = { itemName: key, amount: itemNamesObject[key] };
-		} else if (itemNamesObject[key] > bestSellingItem) {
-			bestSellingItem = {
-				itemName: key,
-				amount: itemNamesObject[key],
-			};
+			bestSellingItem = { itemName: key, revenue: itemRevenue };
+		} else {
+			if (itemRevenue > bestSellingItem.revenue) {
+				bestSellingItem = {
+					itemName: key,
+					revenue: itemRevenue,
+				};
+			}
 		}
 	}
 
