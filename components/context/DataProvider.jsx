@@ -1,10 +1,7 @@
 import { createContext, useEffect, useState } from "react";
-import {
-	fetchBuyers,
-	fetchItem,
-	fetchSummary,
-	fetchTransaction,
-} from "../utils/dataFetchers";
+import { fetchBuyers, fetchItem } from "../utils/dataFetchers";
+import { postTransaction } from "../utils/dataPosters";
+import { checkForDuplicate } from "../utils/checkForDuplicate";
 
 export const GlobalContext = createContext();
 
@@ -86,9 +83,8 @@ const DataProvider = ({ children }) => {
 		if (newOrderedItem.length < 1) {
 			setOrderedItem([newItem]);
 		} else {
-			// if there's same item then only add the qty of the item
+			// if there's same item then show error message
 			let isSame = false;
-
 			// check if there's same entry
 			newOrderedItem.forEach((oldItem) => {
 				if (oldItem.name === newItem.name) {
@@ -97,11 +93,8 @@ const DataProvider = ({ children }) => {
 				}
 			});
 
-			if (isSame) {
-				setOrderedItem([...newOrderedItem]);
-			} else {
-				setOrderedItem([...newOrderedItem, newItem]);
-			}
+			// only set item when item is new
+			if (!isSame) setOrderedItem([...newOrderedItem, newItem]);
 		}
 	};
 
@@ -146,32 +139,19 @@ const DataProvider = ({ children }) => {
 			buyer: orderedItem[0].buyerName,
 		};
 
-		const transactionData = await fetchTransaction();
+		// returns array of duplicate items
+		const duplicatedItem = await checkForDuplicate(submittedDetails);
 
-		// loop through array then filter to find same user transaction history
-
-		// const buyerItem = transactionData
-		// 	.map((transaction) =>
-		// 		transaction.filter(
-		// 			(transaction) => transaction.buyer === submittedDetails.buyer
-		// 		)
-		// 	)
-		// 	.filter((data) => data.length > 0)[0];
-
-		// flatten array first then filter immediately to get buyer history
-		const buyerItem = transactionData
-			.flat(2)
-			.filter((transaction) => transaction.buyer === submittedDetails.buyer);
-
-		// get duplicates in buyer history
-		const duplicatedItem = submittedDetails.details
-			.map((detail) =>
-				buyerItem.filter((item) => item.itemName === detail.itemName)
-			)
-			.filter((duplicate) => duplicate.length > 0)
-			.flat();
-
-		setDuplicateItem(duplicatedItem);
+		// if there is duplicate then store duplicate item and show error message
+		if (duplicatedItem.length > 0) {
+			setDuplicateItem(duplicatedItem);
+			setupToast(
+				"You've already bought this item today, please comeback tomorrow for the same item.",
+				"danger"
+			);
+		} else {
+			postTransaction();
+		}
 	};
 
 	const removeDuplicate = () => {
@@ -187,8 +167,6 @@ const DataProvider = ({ children }) => {
 	const dataSetter = () => {
 		fetchBuyers().then((data) => setBuyerList(data));
 		fetchItem().then((data) => setItemList(data));
-		fetchTransaction().then((data) => setTransactions(data));
-		fetchSummary().then((data) => setSummary(data));
 	};
 
 	useEffect(() => {
