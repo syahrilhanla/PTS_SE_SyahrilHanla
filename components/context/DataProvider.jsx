@@ -27,7 +27,7 @@ const DataProvider = ({ children }) => {
 	const [showSummary, setShowSummary] = useState(false);
 	const [showToast, setShowToast] = useState({
 		toastMessage:
-			"Due to stock shortage customer now can only buy 1 (one) kind of item in a transaction per day. We are really sorry for the inconvenience. As compensation, please kindly take our offering of Free Shipment. Sincerely yours, The Island Shop.",
+			"Due to stock shortage, customer now can only buy 1 (one) kind of item in a transaction per day. We are really sorry for the inconvenience. As compensation, please kindly take our offering of Free Shipment. Sincerely yours, The Island Shop.",
 		eventType: "danger",
 	});
 

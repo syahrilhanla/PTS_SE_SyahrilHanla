@@ -203,6 +203,36 @@
         "buyer": "Budi",
         "totalSpending": 95000
       }
+    ],
+    "weeklyData": [
+      {
+        "name": "Day 1",
+        "revenue": 500941
+      },
+      {
+        "name": "Day 2",
+        "revenue": 236233
+      },
+      {
+        "name": "Day 3",
+        "revenue": 136363
+      },
+      {
+        "name": "Day 4",
+        "revenue": 757466
+      },
+      {
+        "name": "Day 5",
+        "revenue": 246347
+      },
+      {
+        "name": "Day 6",
+        "revenue": 235263
+      },
+      {
+        "name": "Today",
+        "revenue": 600000
+      }
     ]
   }
 }
