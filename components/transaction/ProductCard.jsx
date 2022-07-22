@@ -1,31 +1,15 @@
 import { useContext } from "react";
+import PriceTagGenerator from "../common/PriceTagGenerator";
 import { GlobalContext } from "../context/DataProvider";
 
 const ProductCard = ({ item }) => {
 	const { addItemToCart, orderedItem, currentBuyer, setupToast } =
 		useContext(GlobalContext);
 
-	const PriceTagGenerator = ({ category }) => {
-		if (item.prices.filter((price) => price.priceFor === category).length > 0) {
-			return (
-				<p className="flex justify-between w-full">
-					<span>{category}</span>
-					<span>
-						Rp.{" "}
-						{
-							item.prices.filter((price) => price.priceFor === category)[0]
-								.price
-						}
-					</span>
-				</p>
-			);
-		}
-	};
-
 	return (
 		<div className="md:w-52 w-48 bg-white rounded-lg shadow-md flex flex-col justify-center dark:bg-gray-800 dark:border-gray-700">
 			<img
-				className="p-8 rounded-t-lg h-56 "
+				className="p-8 rounded-t-lg md:h-56 h-fit "
 				src={item.image}
 				alt={item.name}
 			/>
@@ -39,9 +23,9 @@ const ProductCard = ({ item }) => {
 				<div className="flex flex-col justify-between items-center mt-3">
 					<div className="text-2xl w-full h-14 mb-3">
 						<span className="w-full grid text-sm font-lighter text-gray-800 text-center dark:text-white">
-							<PriceTagGenerator category="regular" />
-							<PriceTagGenerator category="VIP" />
-							<PriceTagGenerator category="wholesale" />
+							<PriceTagGenerator category="regular" item={item} />
+							<PriceTagGenerator category="VIP" item={item} />
+							<PriceTagGenerator category="wholesale" item={item} />
 						</span>
 					</div>
 					<button

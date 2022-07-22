@@ -1,10 +1,8 @@
 import { createContext, useEffect, useState } from "react";
-import {
-	fetchBuyers,
-	fetchItem,
-	fetchSummary,
-	fetchTransaction,
-} from "../utils/dataFetchers";
+import { fetchBuyers, fetchItem, fetchSummary } from "../utils/dataFetchers";
+import { postSummary, postTransaction } from "../utils/dataPosters";
+import { checkForDuplicate } from "../utils/checkForDuplicate";
+import processSummary from "../utils/processSummary";
 
 export const GlobalContext = createContext();
 
@@ -12,14 +10,13 @@ const DataProvider = ({ children }) => {
 	// INITIAL ITEM DATA
 	const [buyerList, setBuyerList] = useState([]);
 	const [itemList, setItemList] = useState([]);
-	const [transactions, setTransactions] = useState([]);
-	const [summary, setSummary] = useState({});
+	const [summaryData, setSummaryData] = useState({});
 	// INITIAL ITEM DATA
 
 	// CURRENT BUYER
 	const [currentBuyer, setCurrentBuyer] = useState({
 		name: "Select Buyer",
-		type: "regular",
+		type: "Buyer Type",
 	});
 	// CURRENT BUYER
 
@@ -27,17 +24,29 @@ const DataProvider = ({ children }) => {
 	const [orderedItem, setOrderedItem] = useState([]);
 	const [totalPrice, setTotalPrice] = useState(null);
 	const [duplicateItem, setDuplicateItem] = useState([]);
+	const [showSummary, setShowSummary] = useState(false);
 	const [showToast, setShowToast] = useState({
 		toastMessage:
-			"Due to stock shortage customer now can only buy 1 (one) kind of item in a transaction per day. We are really sorry for the inconvenience.",
+			"Due to stock shortage, customer now can only buy 1 (one) kind of item in a transaction per day. We are really sorry for the inconvenience. As compensation, please kindly take our offering of Free Shipment. Sincerely yours, The Island Shop.",
 		eventType: "danger",
 	});
 
 	useEffect(() => {
 		countTotalPrice(orderedItem);
 		if (orderedItem.length === 0) setTotalPrice(null);
+		if (duplicateItem.length > 0) removeDuplicate();
 	}, [orderedItem]);
-	// CURRENT BUYER
+	// CART PROCESSING
+
+	// useEffect(() => {
+	// 	useProcessSummary().then setSummaryData()
+	// }, showSummary)
+
+	useEffect(() => {
+		setOrderedItem([]);
+		setDuplicateItem([]);
+		setTotalPrice(null);
+	}, [currentBuyer]);
 
 	// toaster setup
 	const setupToast = (toastMessage, eventType) => {
@@ -75,29 +84,24 @@ const DataProvider = ({ children }) => {
 				priceFor: priceInTotal[0].priceFor,
 			},
 		};
-		let duplicateOrdered = [...orderedItem];
+		let newOrderedItem = [...orderedItem];
 
-		if (duplicateOrdered.length < 1) {
+		if (newOrderedItem.length < 1) {
 			setOrderedItem([newItem]);
 		} else {
-			// if there's same item then only add the qty of the item
-			let isSame;
-			let newOrderedItem = duplicateOrdered.map((oldItem) => {
+			// if there's same item then show error message
+			let isSame = false;
+			// check if there's same entry
+			newOrderedItem.forEach((oldItem) => {
 				if (oldItem.name === newItem.name) {
-					oldItem.qty++;
+					setupToast("Item has already been added to Shopping Cart", "danger");
 					isSame = true;
-					return oldItem;
-				} else {
-					return oldItem;
 				}
 			});
 
-			if (isSame) {
-				setOrderedItem([...newOrderedItem]);
-			} else setOrderedItem([...newOrderedItem, newItem]);
+			// only set item when item is new
+			if (!isSame) setOrderedItem([...newOrderedItem, newItem]);
 		}
-
-		// make new object to add quantity and price for item
 	};
 
 	const countTotalPrice = (orderedItem) => {
@@ -132,7 +136,8 @@ const DataProvider = ({ children }) => {
 				itemName: item.name,
 				buyer: item.buyerName,
 				qty: item.qty,
-				totalPrice: item.priceInTotal.price,
+				totalPrice: item.initialPrice * item.qty,
+				type: item.type,
 			};
 		});
 
@@ -141,39 +146,46 @@ const DataProvider = ({ children }) => {
 			buyer: orderedItem[0].buyerName,
 		};
 
-		const transactionData = await fetchTransaction();
+		// returns array of duplicate items
+		const duplicatedItem = await checkForDuplicate(submittedDetails);
 
-		// loop through array then filter to find same user transaction history
+		// if there is duplicate then store duplicate item and show error message
+		if (duplicatedItem.length > 0) {
+			setDuplicateItem(duplicatedItem);
+			setupToast(
+				"You've already bought this item today, please comeback tomorrow for the same item.",
+				"danger"
+			);
+		} else {
+			try {
+				// post transaction data, then process summary
+				await postTransaction(submittedDetails.details);
 
-		// const buyerItem = transactionData
-		// 	.map((transaction) =>
-		// 		transaction.filter(
-		// 			(transaction) => transaction.buyer === submittedDetails.buyer
-		// 		)
-		// 	)
-		// 	.filter((data) => data.length > 0)[0];
+				const { summaryObject } = await processSummary();
+				setSummaryData(summaryObject);
 
-		// flatten array first then filter immediately to get buyer history
-		const buyerItem = transactionData
-			.flat(2)
-			.filter((transaction) => transaction.buyer === submittedDetails.buyer);
-
-		// get duplicates in buyer history
-		const duplicatedItem = submittedDetails.details
-			.map((detail) =>
-				buyerItem.filter((item) => item.itemName === detail.itemName)
-			)
-			.filter((duplicate) => duplicate.length > 0)
-			.flat();
-
-		console.log(duplicatedItem);
+				setShowSummary(true);
+			} catch (error) {
+				setupToast("Failed to connect to the Database, try again.", "danger");
+			}
+		}
 	};
 
+	const removeDuplicate = () => {
+		const removedDuplicate = duplicateItem
+			.map((duplicate) =>
+				orderedItem.filter((item) => item.name === duplicate.itemName)
+			)
+			.flat()[0];
+
+		if (!removedDuplicate) setDuplicateItem([]);
+	};
+
+	// runs on initial load
 	const dataSetter = () => {
 		fetchBuyers().then((data) => setBuyerList(data));
 		fetchItem().then((data) => setItemList(data));
-		fetchTransaction().then((data) => setTransactions(data));
-		fetchSummary().then((data) => setSummary(data));
+		fetchSummary().then((data) => setSummaryData(data));
 	};
 
 	useEffect(() => {
@@ -184,9 +196,8 @@ const DataProvider = ({ children }) => {
 		<GlobalContext.Provider
 			value={{
 				buyerList,
+				setBuyerList,
 				itemList,
-				transactions,
-				summary,
 				currentBuyer,
 				setCurrentBuyer,
 				addItemToCart,
@@ -197,6 +208,10 @@ const DataProvider = ({ children }) => {
 				showToast,
 				handleTransaction,
 				duplicateItem,
+				showSummary,
+				setShowSummary,
+				summaryData,
+				setSummaryData,
 			}}
 		>
 			{children}

@@ -15,10 +15,11 @@ const Cashier = () => {
 		totalPrice,
 		countItemPrice,
 		handleTransaction,
+		duplicateItem,
 	} = useContext(GlobalContext);
 
 	return (
-		<div className="mx-3 h-fit md:mx-4 py-4 px-4 my-3 overflow-auto max-w-md bg-white rounded-lg border shadow-md sm:pt-8 sm:px-5 dark:bg-gray-800 dark:border-gray-700">
+		<div className="mx-3 h-fit lg:mx-4 py-4 px-4 my-3 overflow-auto max-w-lg bg-white rounded-lg border shadow-md sm:pt-8 sm:px-5 dark:bg-gray-800 dark:border-gray-700">
 			<div>
 				<div className="flex justify-between items-center py-0">
 					<h3 className="text-2xl px-3 md:px-0 font-semibold leading-none text-gray-900 dark:text-white">
@@ -43,7 +44,7 @@ const Cashier = () => {
 			<div className="mt-8">
 				<ul
 					role="list"
-					className="max-h-[60vh] px-3 md:px-0  overflow-y-auto divide-y space-y-2
+					className="max-h-[60vh] px-3 md:px-0  overflow-y-auto space-y-2
            divide-gray-200 dark:divide-gray-700 mb-2"
 				>
 					{orderedItem.length > 0 &&
@@ -52,6 +53,7 @@ const Cashier = () => {
 								item={item}
 								key={item.name}
 								countItemPrice={countItemPrice}
+								duplicateItem={duplicateItem}
 							/>
 						))}
 				</ul>
@@ -67,7 +69,9 @@ const Cashier = () => {
 					 text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700
 					  focus:outline-none dark:focus:ring-blue-800 flex justify-center items-center
 						disabled:cursor-not-allowed"
-					disabled={orderedItem.length > 0 ? false : true}
+					disabled={
+						duplicateItem.length < 1 && orderedItem.length > 0 ? false : true
+					}
 					onClick={() => handleTransaction()}
 				>
 					<p className="text-lg font-medium">Print Receipt</p>

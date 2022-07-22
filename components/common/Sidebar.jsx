@@ -2,19 +2,13 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 import { HiOutlineDocumentReport } from "react-icons/hi";
-import { AiOutlineUsergroupAdd , AiOutlineShop} from "react-icons/ai";
+import { AiOutlineUsergroupAdd, AiOutlineShop } from "react-icons/ai";
 import { GiIsland } from "react-icons/gi";
-import { MdPointOfSale } from "react-icons/md";
 
 const Sidebar = () => {
 	const router = useRouter();
 
 	const navButtons = [
-		{
-			link: "/pos",
-			text: "Point of Sales",
-			icon: () => <MdPointOfSale />,
-		},
 		{
 			link: "/",
 			text: "Shop",
@@ -39,13 +33,13 @@ const Sidebar = () => {
 					<a
 						className={`${
 							router.pathname === navButton.link && "bg-gray-100"
-						} flex items-center md:justify-start 
+						} flex items-center lg:justify-start 
 					justify-center p-2 text-base font-normal 
 					text-gray-900 rounded-lg dark:text-white
 					 hover:bg-gray-200 dark:hover:bg-gray-500`}
 					>
 						{navButton.icon()}
-						<span className="ml-3 md:block hidden">{navButton.text}</span>
+						<span className="ml-3 lg:block hidden">{navButton.text}</span>
 					</a>
 				</Link>
 			</li>
@@ -53,23 +47,23 @@ const Sidebar = () => {
 	};
 
 	return (
-		<div className="h-full md:w-64 w-16 z-50">
-			<aside className="h-full md:w-52 w-16 fixed" aria-label="Sidebar">
+		<div className="h-full lg:w-64 w-16 z-30">
+			<aside className="h-full lg:w-52 w-16 fixed" aria-label="Sidebar">
 				<div
 					className="h-full w-full overflow-y-auto py-4 px-1  shadow-md
 			 bg-white rounded dark:bg-gray-800 grid grid-rows-[1fr_14fr]"
 				>
 					{/* Logo */}
 					<div
-						className="w-full flex sm:justify-between md:mt-4
-					 justify-center items-center gap-1 md:px-5 px-0 "
+						className="w-full flex lg:justify-between lg:mt-4
+					 justify-center items-center gap-1 lg:px-5 px-0 "
 					>
-						<GiIsland className="md:h-10 md:w-10 h-6 w-6" />
-						<p className="md:block hidden">The Island Shop</p>
+						<GiIsland className="lg:h-10 lg:w-10 h-6 w-6" />
+						<p className="lg:block hidden">The Island Shop</p>
 					</div>
 
 					{/* Navigations */}
-					<ul className="space-y-6 md:space-y-3 px-3 flex flex-col justify-center">
+					<ul className="space-y-6 lg:space-y-3 px-3 flex flex-col justify-center">
 						{navButtons.map((navButton) => (
 							<Navigations key={navButton.text} navButton={navButton} />
 						))}

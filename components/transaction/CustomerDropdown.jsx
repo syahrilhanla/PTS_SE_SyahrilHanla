@@ -21,7 +21,7 @@ const CustomerDropdown = ({ buyers, setCurrentBuyer }) => {
 			<div
 				className={`${
 					open ? "absolute" : "hidden"
-				} z-50 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600`}
+				} z-30 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600`}
 				// style={{
 				// 	position: "absolute",
 				// 	inset: "0px auto auto 0px",
