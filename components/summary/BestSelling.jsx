@@ -15,7 +15,7 @@ const BestSelling = () => {
 			<h3 className="font-medium text-2xl mb-1">Best Selling Item</h3>
 			<hr className="mb-3" />
 
-			{itemList.length > 0 && (
+			{itemList.length > 0 && summaryData && (
 				<>
 					{" "}
 					<span className="flex w-full justify-center">
