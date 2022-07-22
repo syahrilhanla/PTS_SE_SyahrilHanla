@@ -39,6 +39,7 @@ const DataProvider = ({ children }) => {
 
 	useEffect(() => {
 		setOrderedItem([]);
+		setDuplicateItem([]);
 		setTotalPrice(null);
 	}, [currentBuyer]);
 
