@@ -1,17 +1,10 @@
-const CategoryList = ({ data, revenueOfDay }) => {
+const CustomerList = ({ customer }) => {
 	return (
 		<li className="py-4">
 			<div className="flex items-center space-x-4">
-				<div className="flex-shrink-0">
-					<img
-						className="w-8 h-8 rounded-full"
-						src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-						alt="Neil image"
-					/>
-				</div>
 				<div className="flex-1 min-w-0">
 					<p className="text-base font-normal text-gray-900 truncate dark:text-white">
-						Neil
+						{customer.buyer}
 					</p>
 				</div>
 				{/* Rank of category */}
@@ -19,14 +12,14 @@ const CategoryList = ({ data, revenueOfDay }) => {
 				{/* Rank of category */}
 
 				<div className="inline-flex items-center text-xl font-semibold text-gray-900 dark:text-white">
-					$420
+					Rp. {customer.totalSpending}
 				</div>
 			</div>
 		</li>
 	);
 };
 
-const CustomerCard = () => {
+const CustomerCard = ({ topCustomers }) => {
 	return (
 		<div className="w-full flex justify-center">
 			<div className="w-full p-4 max-w-md bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
@@ -44,9 +37,9 @@ const CustomerCard = () => {
 						role="list"
 						className="divide-y divide-gray-200 dark:divide-gray-700"
 					>
-						<CategoryList />
-						<CategoryList />
-						<CategoryList />
+						{topCustomers.map((customer) => (
+							<CustomerList key={customer.buyer} customer={customer} />
+						))}
 					</ul>
 				</div>
 			</div>
