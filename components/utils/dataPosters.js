@@ -1,6 +1,6 @@
 const postTransaction = async (submittedData) => {
 	try {
-		fetch("http://localhost:8000/Transaction", {
+		await fetch("http://localhost:8000/Transaction", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -14,7 +14,7 @@ const postTransaction = async (submittedData) => {
 
 const postSummary = async (summaryData) => {
 	try {
-		fetch("http://localhost:8000/Summary", {
+		await fetch("http://localhost:8000/Summary", {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json",
@@ -28,7 +28,7 @@ const postSummary = async (summaryData) => {
 
 const postUser = async (buyerData) => {
 	try {
-		fetch("http://localhost:8000/Buyers", {
+		await fetch("http://localhost:8000/Buyers", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
