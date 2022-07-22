@@ -150,7 +150,7 @@ const DataProvider = ({ children }) => {
 				"danger"
 			);
 		} else {
-			postTransaction();
+			await postTransaction(submittedDetails.details);
 		}
 	};
 
