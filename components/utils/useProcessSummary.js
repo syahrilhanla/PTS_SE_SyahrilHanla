@@ -23,8 +23,6 @@ const useProcessSummary = async () => {
 		revenuePerCategory,
 	};
 
-	console.log(summaryObject);
-
 	return { transactionData, summaryObject };
 };
 

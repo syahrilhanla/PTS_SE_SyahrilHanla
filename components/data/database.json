@@ -1,144 +1,163 @@
 {
-	"Items": [
-		{
-			"name": "Black Hat",
-			"type": "hats",
-			"image": "/assets/products/black-hat.jpg",
-			"prices": [
-				{
-					"priceFor": "regular",
-					"price": 20000
-				},
-				{
-					"priceFor": "VIP",
-					"price": 15000
-				}
-			]
-		},
-		{
-			"name": "Blue Hat",
-			"type": "hats",
-			"image": "/assets/products/blue-hats.jpg",
-			"prices": [
-				{
-					"priceFor": "regular",
-					"price": 20000
-				},
-				{
-					"priceFor": "VIP",
-					"price": 15000
-				}
-			]
-		},
-		{
-			"name": "Mens Top",
-			"type": "tops",
-			"image": "/assets/products/tops.jpg",
-			"prices": [
-				{
-					"priceFor": "regular",
-					"price": 30000
-				},
-				{
-					"priceFor": "VIP",
-					"price": 20000
-				},
-				{
-					"priceFor": "wholesale",
-					"price": 15000
-				}
-			]
-		},
-		{
-			"name": "Tuxedo",
-			"type": "tops",
-			"image": "/assets/products/tuxedo.jpg",
-			"prices": [
-				{
-					"priceFor": "VIP",
-					"price": 80000
-				}
-			]
-		},
-		{
-			"name": "Mens Shorts",
-			"type": "shorts",
-			"image": "/assets/products/shorts.jpg",
-			"prices": [
-				{
-					"priceFor": "regular",
-					"price": 50000
-				}
-			]
-		}
-	],
-	"Buyers": [
-		{
-			"name": "Ani",
-			"type": "regular"
-		},
-		{
-			"name": "Budi",
-			"type": "VIP"
-		},
-		{
-			"name": "Charlie",
-			"type": "regular"
-		},
-		{
-			"name": "Dipta",
-			"type": "wholesale"
-		}
-	],
-	"Transaction": [
-		{
-			"id": "initial"
-		},
-		[
-			{
-				"itemName": "Black Hat",
-				"buyer": "Ani",
-				"qty": 1,
-				"totalPrice": 20000,
-				"type": "hats"
-			}
-		]
-	],
-	"Summary": {
-		"totalTransaction": 5,
-		"bestSellingItem": "square hat",
-		"bestSellingCategory": "hats",
-		"rpc": [
-			{
-				"category": "hats",
-				"revenue": 1560000
-			},
-			{
-				"category": "tops",
-				"revenue": 100000
-			},
-			{
-				"category": "shorts",
-				"revenue": 0
-			}
-		],
-		"revenue": 1660000,
-		"bestSpenders": [
-			{
-				"name": "Dipta",
-				"type": "wholesale",
-				"spent": 1500000
-			},
-			{
-				"name": "Ani",
-				"type": "regular",
-				"spent": 120000
-			},
-			{
-				"name": "Budi",
-				"type": "VIP",
-				"spent": 40000
-			}
-		]
-	}
+  "Items": [
+    {
+      "name": "Black Hat",
+      "type": "hats",
+      "image": "/assets/products/black-hat.jpg",
+      "prices": [
+        {
+          "priceFor": "regular",
+          "price": 20000
+        },
+        {
+          "priceFor": "VIP",
+          "price": 15000
+        }
+      ]
+    },
+    {
+      "name": "Blue Hat",
+      "type": "hats",
+      "image": "/assets/products/blue-hats.jpg",
+      "prices": [
+        {
+          "priceFor": "regular",
+          "price": 20000
+        },
+        {
+          "priceFor": "VIP",
+          "price": 15000
+        }
+      ]
+    },
+    {
+      "name": "Mens Top",
+      "type": "tops",
+      "image": "/assets/products/tops.jpg",
+      "prices": [
+        {
+          "priceFor": "regular",
+          "price": 30000
+        },
+        {
+          "priceFor": "VIP",
+          "price": 20000
+        },
+        {
+          "priceFor": "wholesale",
+          "price": 15000
+        }
+      ]
+    },
+    {
+      "name": "Tuxedo",
+      "type": "tops",
+      "image": "/assets/products/tuxedo.jpg",
+      "prices": [
+        {
+          "priceFor": "VIP",
+          "price": 80000
+        }
+      ]
+    },
+    {
+      "name": "Mens Shorts",
+      "type": "shorts",
+      "image": "/assets/products/shorts.jpg",
+      "prices": [
+        {
+          "priceFor": "regular",
+          "price": 50000
+        }
+      ]
+    }
+  ],
+  "Buyers": [
+    {
+      "name": "Ani",
+      "type": "regular"
+    },
+    {
+      "name": "Budi",
+      "type": "VIP"
+    },
+    {
+      "name": "Charlie",
+      "type": "regular"
+    },
+    {
+      "name": "Dipta",
+      "type": "wholesale"
+    }
+  ],
+  "Transaction": [
+    {
+      "id": "initial"
+    },
+    [
+      {
+        "itemName": "Black Hat",
+        "buyer": "Charlie",
+        "qty": 1,
+        "totalPrice": 20000,
+        "type": "hats"
+      }
+    ],
+    [
+      {
+        "itemName": "Blue Hat",
+        "buyer": "Budi",
+        "qty": 1,
+        "totalPrice": 15000,
+        "type": "hats"
+      },
+      {
+        "itemName": "Mens Top",
+        "buyer": "Budi",
+        "qty": 4,
+        "totalPrice": 80000,
+        "type": "tops"
+      }
+    ],
+    [
+      {
+        "itemName": "Black Hat",
+        "buyer": "Ani",
+        "qty": 1,
+        "totalPrice": 20000,
+        "type": "hats"
+      }
+    ],
+    [
+      {
+        "itemName": "Mens Top",
+        "buyer": "Dipta",
+        "qty": 15,
+        "totalPrice": 225000,
+        "type": "tops"
+      }
+    ]
+  ],
+  "Summary": {
+    "totalTransaction": 4,
+    "totalRevenue": 360000,
+    "bestSellingCategory": {
+      "categoryName": "tops",
+      "revenue": 305000
+    },
+    "bestSellingItem": {
+      "itemName": "Mens Top",
+      "revenue": 305000
+    },
+    "revenuePerCategory": [
+      {
+        "categoryName": "hats",
+        "revenue": 55000
+      },
+      {
+        "categoryName": "tops",
+        "revenue": 305000
+      }
+    ]
+  }
 }

@@ -1,11 +1,9 @@
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { GlobalContext } from "../context/DataProvider";
-import useGetTransaction from "../utils/useGetTransaction";
 
 const SummaryModal = () => {
 	const { setShowSummary } = useContext(GlobalContext);
-	const { transactionData } = useGetTransaction();
 	const router = useRouter();
 
 	const CloseButton = () => {

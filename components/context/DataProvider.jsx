@@ -1,7 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import { fetchBuyers, fetchItem } from "../utils/dataFetchers";
-import { postTransaction } from "../utils/dataPosters";
+import { postSummary, postTransaction } from "../utils/dataPosters";
 import { checkForDuplicate } from "../utils/checkForDuplicate";
+import useProcessSummary from "../utils/useProcessSummary";
 
 export const GlobalContext = createContext();
 
@@ -25,6 +26,7 @@ const DataProvider = ({ children }) => {
 	const [totalPrice, setTotalPrice] = useState(null);
 	const [duplicateItem, setDuplicateItem] = useState([]);
 	const [showSummary, setShowSummary] = useState(false);
+	const [summaryData, setSummaryData] = useState({});
 	const [showToast, setShowToast] = useState({
 		toastMessage:
 			"Due to stock shortage customer now can only buy 1 (one) kind of item in a transaction per day. We are really sorry for the inconvenience. As compensation, please kindly take our offering of Free Shipment. Sincerely yours, The Island Shop.",
@@ -37,6 +39,10 @@ const DataProvider = ({ children }) => {
 		if (duplicateItem.length > 0) removeDuplicate();
 	}, [orderedItem]);
 	// CART PROCESSING
+
+	// useEffect(() => {
+	// 	useProcessSummary().then setSummaryData()
+	// }, showSummary)
 
 	useEffect(() => {
 		setOrderedItem([]);
@@ -154,10 +160,11 @@ const DataProvider = ({ children }) => {
 			);
 		} else {
 			try {
-				// post transaction data and summary first
-
-				// await postSummary();
+				// post transaction data, then process summary
 				await postTransaction(submittedDetails.details);
+
+				const { summaryObject } = await useProcessSummary();
+				await postSummary(summaryObject);
 
 				setShowSummary(true);
 			} catch (error) {
@@ -176,6 +183,7 @@ const DataProvider = ({ children }) => {
 		if (!removedDuplicate) setDuplicateItem([]);
 	};
 
+	// runs on initial load
 	const dataSetter = () => {
 		fetchBuyers().then((data) => setBuyerList(data));
 		fetchItem().then((data) => setItemList(data));

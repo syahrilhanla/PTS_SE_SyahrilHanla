@@ -12,4 +12,19 @@ const postTransaction = async (submittedData) => {
 	}
 };
 
-export { postTransaction };
+const postSummary = async (summaryData) => {
+	try {
+		console.log({ summaryData });
+		fetch("http://localhost:8000/Summary", {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(summaryData),
+		});
+	} catch (error) {
+		console.log(error.message);
+	}
+};
+
+export { postTransaction, postSummary };
