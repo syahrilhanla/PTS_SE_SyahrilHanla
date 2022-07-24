@@ -1,11 +1,14 @@
 const fetchBuyers = async () => {
-	const response = await fetch("https://the-island-shop.herokuapp.com//Buyers");
+	const response = await fetch("https://the-island-shop.herokuapp.com/Buyers");
 	const data = await response.json();
 	return data;
 };
 
 const fetchSummary = async () => {
-	const response = await fetch("https://the-island-shop.herokuapp.com/Summary");
+	const response = await fetch(
+		"https://the-island-shop.herokuapp.com/Summary",
+		{}
+	);
 	const data = await response.json();
 	return data;
 };
