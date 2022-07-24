@@ -1,23 +1,25 @@
 const fetchBuyers = async () => {
-	const response = await fetch("http://localhost:8000/Buyers");
+	const response = await fetch("https://the-island-shop.herokuapp.com//Buyers");
 	const data = await response.json();
 	return data;
 };
 
 const fetchSummary = async () => {
-	const response = await fetch("http://localhost:8000/Summary");
+	const response = await fetch("https://the-island-shop.herokuapp.com/Summary");
 	const data = await response.json();
 	return data;
 };
 
 const fetchTransaction = async () => {
-	const response = await fetch("http://localhost:8000/Transaction");
+	const response = await fetch(
+		"https://the-island-shop.herokuapp.com/Transaction"
+	);
 	const data = await response.json();
 	return data;
 };
 
 const fetchItem = async () => {
-	const response = await fetch("http://localhost:8000/Items");
+	const response = await fetch("https://the-island-shop.herokuapp.com/Items");
 	const data = await response.json();
 	return data;
 };

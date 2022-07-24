@@ -1,6 +1,6 @@
 const postTransaction = async (submittedData) => {
 	try {
-		await fetch("http://localhost:8000/Transaction", {
+		await fetch("https://the-island-shop.herokuapp.com/Transaction", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -14,7 +14,7 @@ const postTransaction = async (submittedData) => {
 
 const postSummary = async (summaryData) => {
 	try {
-		await fetch("http://localhost:8000/Summary", {
+		await fetch("https://the-island-shop.herokuapp.com/Summary", {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json",
@@ -28,7 +28,7 @@ const postSummary = async (summaryData) => {
 
 const postUser = async (buyerData) => {
 	try {
-		await fetch("http://localhost:8000/Buyers", {
+		await fetch("https://the-island-shop.herokuapp.com/Buyers", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
