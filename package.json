@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "concurrently --kill-others \"next dev\" \"npx json-server --watch components/data/database.json --port 8000\"",
 		"build": "next build",
-		"start": "next start",
+		"start": "concurrently --kill-others \"next start\" \"npx json-server --watch components/data/database.json --port 8000\"",
 		"lint": "next lint"
 	},
 	"dependencies": {
