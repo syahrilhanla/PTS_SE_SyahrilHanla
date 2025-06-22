@@ -47,8 +47,8 @@ const Sidebar = () => {
 	};
 
 	return (
-		<div className="h-full lg:w-64 w-16 z-30">
-			<aside className="h-full lg:w-52 w-16 fixed" aria-label="Sidebar">
+		<div className="h-full lg:w-96 w-16 z-30">
+			<aside className="h-full lg:w-72 w-16 fixed" aria-label="Sidebar">
 				<div
 					className="h-full w-full overflow-y-auto py-4 px-1  shadow-md
 			 bg-white rounded dark:bg-gray-800 grid grid-rows-[1fr_14fr]"
