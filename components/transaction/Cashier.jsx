@@ -25,11 +25,11 @@ const Cashier = () => {
 		>
 			<div>
 				<div className="flex justify-between items-center py-0">
-					<h3 className="text-2xl px-3 md:px-0 font-semibold leading-none text-gray-900 dark:text-white">
+					<h3 className="text-2xl px-3 md:px-0 font-semibold leading-none text-slate-700 dark:text-white">
 						Current Order -
 					</h3>
 					<div className="flex flex-col">
-						<h5 className="text-2xl px-3 md:px-0 font-semibold leading-none text-gray-900 dark:text-white">
+						<h5 className="text-2xl px-3 md:px-0 font-semibold leading-none text-slate-700 dark:text-white">
 							{currentBuyer.name}
 						</h5>
 					</div>

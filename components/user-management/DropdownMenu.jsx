@@ -37,7 +37,7 @@ const DropdownMenu = () => {
 							/>
 							<label
 								htmlFor="filter-radio-example-3"
-								className="ml-2 w-full text-sm font-medium text-gray-900 rounded dark:text-gray-300"
+								className="ml-2 w-full text-sm font-medium text-slate-700 rounded dark:text-gray-300"
 							>
 								Last 30 days
 							</label>

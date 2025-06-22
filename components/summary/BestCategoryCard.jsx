@@ -1,5 +1,6 @@
 import { FaHatCowboy, FaTshirt } from "react-icons/fa";
 import { GiShorts } from "react-icons/gi";
+import { formatPriceIDR } from "../helpers/formatPriceIDR";
 
 const BestCategoryCard = ({ bestCategory }) => {
 	return (
@@ -17,14 +18,16 @@ const BestCategoryCard = ({ bestCategory }) => {
 			</div>
 			<div className="px-5 pb-5">
 				<div>
-					<h5 className="text-2xl text-center font-medium tracking-tight text-gray-900 dark:text-white">
+					<h5 className="text-2xl text-center font-medium tracking-tight text-slate-700 dark:text-white">
 						{bestCategory.categoryName}
 					</h5>
 				</div>
 
 				<div className="flex flex-row justify-between mt-3 px-4">
 					<h2 className="text-xl font-medium">Total Revenue</h2>
-					<h4 className="text-xl font-medium">Rp. {bestCategory.revenue}</h4>
+					<h4 className="text-xl font-medium">
+						{formatPriceIDR(bestCategory.revenue)}
+					</h4>
 				</div>
 			</div>
 		</div>

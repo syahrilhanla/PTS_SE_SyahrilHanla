@@ -25,14 +25,14 @@ const OrderedItemCard = ({ item, countItemPrice, duplicateItem }) => {
 						/>
 					</div>
 					<div className="flex-1 min-w-0">
-						<p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+						<p className="text-sm font-medium text-slate-700 truncate dark:text-white">
 							{item.name}
 						</p>
 						<p className="text-sm text-gray-500 truncate dark:text-gray-400">
 							{item.priceInTotal.priceFor} Price
 						</p>
 					</div>
-					<div className="flex flex-col items-center text-base font-semibold text-gray-900 dark:text-white">
+					<div className="flex flex-col items-center text-base font-semibold text-slate-700 dark:text-white">
 						Rp. {item.priceInTotal.price}
 						<div className="w-full flex justify-evenly gap-1">
 							<button

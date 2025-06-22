@@ -88,19 +88,19 @@ const AddUser = ({ buyerList }) => {
 		<div className="mt-5 min-w-[50%] place-content-center">
 			<div className="p-4 py-6 w-full bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
 				<form className="space-y-6 py-6 " onSubmit={handleSubmit}>
-					<h5 className="text-xl font-medium text-gray-900 dark:text-white">
+					<h5 className="text-xl font-medium text-slate-700 dark:text-white">
 						Add New Customer
 					</h5>
 					<div>
 						<label
 							htmlFor="email"
-							className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							className="block mb-2 text-sm font-medium text-slate-700 dark:text-gray-300"
 						>
 							Customer Name
 						</label>
 						<input
 							type="text"
-							className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+							className="bg-gray-50 border border-gray-300 text-slate-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
 							placeholder="Customer's Name"
 							value={buyer}
 							onChange={(e) => setBuyer(e.target.value)}
@@ -109,7 +109,7 @@ const AddUser = ({ buyerList }) => {
 					<div>
 						<label
 							htmlFor="password"
-							className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							className="block mb-2 text-sm font-medium text-slate-700 dark:text-gray-300"
 						>
 							Customer Type
 						</label>

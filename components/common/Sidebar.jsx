@@ -35,7 +35,7 @@ const Sidebar = () => {
 							router.pathname === navButton.link && "bg-gray-100"
 						} flex items-center lg:justify-start 
 					justify-center p-2 text-base font-normal 
-					text-gray-900 rounded-lg dark:text-white
+					text-slate-700 rounded-lg dark:text-white
 					 hover:bg-gray-200 dark:hover:bg-gray-500`}
 					>
 						{navButton.icon()}

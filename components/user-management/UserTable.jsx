@@ -4,7 +4,7 @@ const TableRow = ({ buyer }) => {
 			<td className="py-4 px-6">{buyer.type}</td>
 			<th
 				scope="row"
-				className="text-center py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+				className="text-center py-4 px-6 font-medium text-slate-700 whitespace-nowrap dark:text-white"
 			>
 				{buyer.name}
 			</th>

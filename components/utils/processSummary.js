@@ -1,3 +1,4 @@
+import { formatPriceIDR } from "../helpers/formatPriceIDR";
 import { fetchTransaction } from "./dataFetchers";
 import { postSummary } from "./dataPosters";
 import { getBestSellingItem } from "./getBestSellings";
@@ -23,31 +24,31 @@ const processSummary = async () => {
 	const weeklyData = [
 		{
 			name: "Day 1",
-			revenue: 500941,
+			revenue: formatPriceIDR(500941),
 		},
 		{
 			name: "Day 2",
-			revenue: 236233,
+			revenue: formatPriceIDR(236233),
 		},
 		{
 			name: "Day 3",
-			revenue: 136363,
+			revenue: formatPriceIDR(136363),
 		},
 		{
 			name: "Day 4",
-			revenue: 757466,
+			revenue: formatPriceIDR(757466),
 		},
 		{
 			name: "Day 5",
-			revenue: 246347,
+			revenue: formatPriceIDR(246347),
 		},
 		{
 			name: "Day 6",
-			revenue: 235263,
+			revenue: formatPriceIDR(235263),
 		},
 		{
 			name: "Today",
-			revenue: totalRevenue,
+			revenue: formatPriceIDR(totalRevenue),
 		},
 	];
 

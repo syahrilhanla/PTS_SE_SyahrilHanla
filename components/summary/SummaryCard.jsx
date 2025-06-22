@@ -12,9 +12,8 @@ const SummaryCard = () => {
 	};
 
 	return (
-		<div className="min-w-[60vw] place-content-center p-4">
+		<div className="md:w-[60vw] w-full place-content-center p-4 text-slate-700">
 			<TabHeader getOption={getOption} option={option} />
-			{/* <h2 className="font-medium text-3xl">Overall Transactions: 5</h2> */}
 
 			{option === 1 && <BestSelling />}
 			{option === 2 && <RevenueCaps />}
