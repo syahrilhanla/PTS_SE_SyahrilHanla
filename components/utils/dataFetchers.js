@@ -1,13 +1,14 @@
 const fetchBuyers = async () => {
-	const response = await fetch("https://the-island-shop.herokuapp.com/Buyers");
+	const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/Buyers`);
 	const data = await response.json();
 	return data;
 };
 
 const fetchSummary = async () => {
+	console.log(process.env.NEXT_PUBLIC_API_URL);
+
 	const response = await fetch(
-		"https://the-island-shop.herokuapp.com/Summary",
-		{}
+		`${process.env.NEXT_PUBLIC_API_URL}/Summary`,
 	);
 	const data = await response.json();
 	return data;
@@ -15,14 +16,14 @@ const fetchSummary = async () => {
 
 const fetchTransaction = async () => {
 	const response = await fetch(
-		"https://the-island-shop.herokuapp.com/Transaction"
+		`${process.env.NEXT_PUBLIC_API_URL}/Transaction`
 	);
 	const data = await response.json();
 	return data;
 };
 
 const fetchItem = async () => {
-	const response = await fetch("https://the-island-shop.herokuapp.com/Items");
+	const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/Items`);
 	const data = await response.json();
 	return data;
 };
