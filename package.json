@@ -6,7 +6,8 @@
 		"dev": "concurrently --kill-others \"next dev\" \"npx json-server --watch components/data/database.json --port 8000\"",
 		"build": "next build",
 		"start": "concurrently --kill-others \"next start\" \"npx json-server --watch components/data/database.json --port 8000\"",
-		"lint": "next lint"
+		"lint": "next lint",
+		"json-server": "npx json-server --watch components/data/database.json --port 8000"
 	},
 	"dependencies": {
 		"concurrently": "^7.3.0",
