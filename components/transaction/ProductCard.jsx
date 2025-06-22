@@ -1,18 +1,22 @@
 import { useContext } from "react";
 import PriceTagGenerator from "../common/PriceTagGenerator";
 import { GlobalContext } from "../context/DataProvider";
+import Image from "next/image";
 
 const ProductCard = ({ item }) => {
 	const { addItemToCart, orderedItem, currentBuyer, setupToast } =
 		useContext(GlobalContext);
 
 	return (
-		<div className="md:w-52 w-48 bg-white rounded-lg shadow-md flex flex-col justify-center dark:bg-gray-800 dark:border-gray-700">
-			<img
-				className="p-8 rounded-t-lg md:h-56 h-fit "
+		<div className="w-full bg-white rounded-lg shadow-md flex flex-col justify-center dark:bg-gray-800 dark:border-gray-700">
+			<Image
 				src={item.image}
 				alt={item.name}
+				className="object-contain p-8 rounded-t-lg md:h-56 h-fit"
+				width={200}
+				height={200}
 			/>
+
 			<div className="px-5 pb-5">
 				<a>
 					<h5 className="text-lg text-center font-normal tracking-tight text-gray-900 dark:text-white">
