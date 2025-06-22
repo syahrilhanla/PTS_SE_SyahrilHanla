@@ -12,7 +12,7 @@ const Categories = ({ setCategory }) => {
 					className="w-full text-white bg-blue-500 hover:bg-blue-600 focus:ring-4
 					 focus:ring-blue-200 font-medium rounded-lg gap-4
 					 text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700
-					  focus:outline-none dark:focus:ring-blue-800 flex justify-center items-center"
+					  focus:outline-none dark:focus:ring-blue-800 flex justify-center items-center duration-300 transition-colors"
 				>
 					{number === 1 && (
 						<BsFillHandbagFill className="w-8 h-8 text-slate-100" />

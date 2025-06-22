@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
 			{showToast.toastMessage === "" ? null : (
 				<ToastComponent setupToast={setupToast} showToast={showToast} />
 			)}
-			<div className="sm:flex h-full w-full grid grid-cols-[2fr_5fr]">
+			<div className="sm:flex h-full w-full grid grid-cols-[0.7fr_5fr] md:grid-cols-[2fr_5fr]">
 				<Sidebar />
 				<div className="w-full flex justify-center">
 					<div className="w-full">{children}</div>
