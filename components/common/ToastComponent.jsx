@@ -1,4 +1,5 @@
 import { GoStop } from "react-icons/go";
+import { IoMdClose } from "react-icons/io";
 
 const ToastComponent = ({ showToast, setupToast }) => {
 	if (
@@ -11,8 +12,8 @@ const ToastComponent = ({ showToast, setupToast }) => {
 	}
 
 	return (
-		<div className={`flex justify-center w-screen z-50`}>
-			<div className="fixed top-10 lg:max-w-lg max-w-sm">
+		<div className={`flex justify-center w-screen -z-10`}>
+			<div className="fixed top-10 lg:max-w-lg max-w-sm z-50">
 				<div
 					className="flex items-center p-4 mb-4 text-gray-500
          bg-red-100 rounded-lg shadow 
@@ -26,11 +27,10 @@ const ToastComponent = ({ showToast, setupToast }) => {
 						{showToast.toastMessage}
 					</div>
 					<button
-						className="px-2 ml-4 py-0 text-red-400 font-semiblock text-xl rounded-md hover:bg-red-200"
+						className="p-2 text-red-400 font-semibold text-xl rounded-md hover:bg-red-200"
 						onClick={() => setupToast("")}
 					>
-						{" "}
-						X{" "}
+						<IoMdClose />
 					</button>
 				</div>
 			</div>
